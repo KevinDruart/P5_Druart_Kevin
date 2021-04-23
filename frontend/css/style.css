@@ -1,78 +1,111 @@
-/*RESET CSS*/
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-/*INDEX*/
-#card {
-    background-color: #f2f2f2;
-    border-radius: 15px;
-    width: auto;
-    padding: 20px;
-    margin-left: auto;
-    margin-right: auto;
+/*GENERALS*/
+header {
+    display: flex;
+    justify-content: center;
 }
 
+.logo {
+    text-decoration: none;
+}
+
+.menu {
+    display: flex;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav {
+    flex-direction: row;
+    display: flex;
+    list-style: none;
+    padding-inline-start: 0px;
+}
+
+.nav-item a {
+    text-decoration: none;
+}
+
+li {
+    padding-right: 10px;
+}
+
+footer {
+    text-align: center;
+    background-color: lightslategray;
+}
+
+/*INDEX*/
 .titlesection {
     text-align: center;
 }
 
-.card_product a {
-    text-decoration: none;
-    text-align: center;
+.Block {
+    width: 100%;
+    flex-direction: column;
+    display: flex;
+    margin-bottom: 20px;
+    border-radius: 3%;
+    box-shadow: 1px 1px 1px 1px grey, 0px -1px 0px grey;
 }
 
-/*PRODUCT*/
-#product {
-    display:flex;
-    flex-direction: row;
+.B1 {
+    width: 98%;
 }
 
-article {
-    width: 50%;
-}
-
-article img {
+.Imageproduit {
     width: 100%;
 }
 
+.B2 {
+    DISPLAY: FLEX;
+    FLEX-DIRECTION: column;
+    TEXT-ALIGN: center;
+}
+
+.Prixproduit {
+    MARGIN: 2PX 0PX 2PX 0PX;
+}
+
+.Nomproduits {
+    MARGIN: auto;
+}
+
+.B2 a {
+        background-color: #1c87c9;
+        border: none;
+        border-radius: 0% 0% 3% 3%;
+        color: white;
+        padding: 20px 34px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 20px;
+        margin: 4px 2px;
+        cursor: pointer;
+}
+
+/*PRODUCT*/
+.Blockdescription {
+    display:flex;
+    flex-direction: column;
+}
+
+.B1description {
+
+}
+
+.Imagedescription {
+    width: 100%;
+}
+
+.B2description {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+/*ORDER*/
+
 /*CART*/
+
