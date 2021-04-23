@@ -7,45 +7,46 @@
   <meta name="description" content="">
   <title>Accueil Orinoco</title>
 
+
   <!-- CSS -->
-  <link href="./css/style.css" rel="stylesheet">
-</head>
+  <link href="css/style.css" rel="stylesheet">
+  <!--fa-->
+  <script src="https://kit.fontawesome.com/490f3c0b00.js" crossorigin="anonymous"></script>
+  <!--Boostrap-->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link href="css/headers.css" rel="stylesheet">
 
 <body>
-  <!--HEADER-->
-  <header>
-    <a href="index.html" class="logo">
-      <span>Orinoco</span>
-    </a>
-  </header>
-  <!--HEADER END-->
-  <!--MENU NAVIGATE-->
-  <div class="menu">
-    <ul class="nav">
-      <li class="nav-item"><a href="index.html" class="nav-link active">Accueil</a></li>
-      <li class="nav-item"><a href="panier.html" class="nav-link">Panier</a></li>
-    </ul>
+  <div class="container">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+        <svg class="bi me-2" width="40" height="32">
+          <use xlink:href="index.html" />
+        </svg>
+        <span class="fs-4">Orinoco</span>
+      </a>
+
+      <ul class="nav nav-pills">
+        <li class="nav-item"><a href="index.html" class="nav-link active">Accueil</a></li>
+        <li class="nav-item"><a href="produit.html" class="nav-link">Produits</a></li>
+        <li class="nav-item"><a href="panier.html" class="nav-link">Panier</a></li>
+      </ul>
+    </header>
   </div>
-  <!--MENU NAVIGATE END-->
-
-
   <main>
     <h2 class="titlesection">Quelques produits</h2>
     <section id="card">
 
     </section>
   </main>
-  <!--FOOTER-->
-  <footer>
-    <div class="credits">
-      <span>Orinoco. Copyright © 2021.</span>
+  <footer class="footer mt-auto py-3 bg-light">
+    <div class="container">
+      <span class="text-muted">Orinoco. Copyright © 2021.</span>
     </div>
   </footer>
-  <!--FOOTER END-->
   <!--Javascript-->
-  <script src="./js/request.js"></script>
-  <script src="./js/view.js"></script>
-  <script src="./js/index.js"></script>
+  <script src="/js/request.js"></script>
+  <script src="/js/index.js"></script>
 </body>
 
 </html>

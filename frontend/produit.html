@@ -5,45 +5,56 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
-  <title>Produit selectionné</title>
+  <title>Accueil Orinoco</title>
+
 
   <!-- CSS -->
   <link href="css/style.css" rel="stylesheet">
-</head>
+  <!--Boostrap-->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link href="css/headers.css" rel="stylesheet">
+  <!-- javascript -->
+  <script src="js/produit.js" async></script>
 
 <body>
-  <!--HEADER-->
-  <header>
-    <a href="index.html" class="logo">
-      <span>Orinoco</span>
-    </a>
-  </header>
-  <!--HEADER END-->
-  <!--MENU NAVIGATE-->
-  <div class="menu">
-    <ul class="nav">
-      <li class="nav-item"><a href="index.html" class="nav-link active">Accueil</a></li>
-      <li class="nav-item"><a href="panier.html" class="nav-link">Panier</a></li>
-    </ul>
+  <div class="container">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+        <svg class="bi me-2" width="40" height="32">
+          <use xlink:href="#bootstrap" />
+        </svg>
+        <span class="fs-4">Orinoco</span>
+      </a>
+
+      <ul class="nav nav-pills">
+        <li class="nav-item"><a href="index.html" class="nav-link active">Accueil</a></li>
+        <li class="nav-item"><a href="produit.html" class="nav-link">Produits</a></li>
+        <li class="nav-item"><a href="panier.html" class="nav-link">Panier</a></li>
+      </ul>
+    </header>
   </div>
-  <!--MENU NAVIGATE END-->
-
-
   <main>
-    <section id="descriptionproduit">
+    <section id="product">
+      <article class="product_img">
+          <img src="images/test.jpg">
+      </article>
+      <aside>
+        <h2>Nom</h2>
+        <p class="product_price">Tarif: <strong>25€</strong></p>
+        <p class="description">Description: </p>
+        <h3>choissisez votre couleur</h3>
+        <select name="colors" id="color_product">colors</select>
+      </aside>
+    </section>
+    <section>
+      <button type="submit">ajouter au panier</button>
     </section>
   </main>
-  <!--FOOTER-->
-  <footer>
-    <div class="credits">
-      <span>Orinoco. Copyright © 2021.</span>
+  <footer class="footer mt-auto py-3 bg-light">
+    <div class="container">
+      <span class="text-muted">Orinoco. Tout droit reservé 2021.</span>
     </div>
   </footer>
-  <!--FOOTER END-->
-  <!--Javascript-->
-  <script src="./js/request.js"></script>
-  <script src="./js/view.js"></script>
-  <script src="./js/produit.js"></script>
 </body>
 
 </html>
