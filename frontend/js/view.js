@@ -1,22 +1,13 @@
-/*----------------------------------Fonctions----------------------------------*/
-
-//fonction création d'éléments
-const create = (type, Qualified, nomType) => {
-    let nomVariable = document.createElement(type);
-    nomVariable.setAttribute(Qualified, nomType);
-    return nomVariable;
-}
-
 /*-------------Création de la mise en page de la page panier--------------------*/
 
-const cart = (produit) => {
+const cart = (article) => {
 
     //on vient cibler la balise ayant pour id cart
     let createCart = document.getElementById("cart");
 
     //on creer l'affichage de la page
-    let cartContainer = create("div", "class", "cartContain");
     let title = create("h1", "class", "title");
+    let cartContainer = create("div", "class", "cartContain");
     let cartProducts = create("div", "class", "cartProducts");
     let tableauPanier = create("table", "class", "tableauPanier");
     let tableauHeaderLigne = create("tr", "class", "tableauHeaderLigne");
@@ -29,8 +20,9 @@ const cart = (produit) => {
     //Attributs supplémentaires
 
     //Hierarchisation des elements creer
+    createCart.appendChild(title);
     createCart.appendChild(cartContainer);
-    cartContainer.appendChild(title);
+
     cartContainer.appendChild(cartProducts);
     cartProducts.appendChild(tableauPanier);
     tableauPanier.appendChild(tableauHeaderLigne);
@@ -47,50 +39,25 @@ const cart = (produit) => {
     tableauHeaderPrix.textContent = "Prix";
     titleForm.textContent = "Avant de valider et payer votre commande, veuillez renseigner certaines informations:";
 
-    //Création d'une ligne dans le tableau pour chaque produit composant le panier
-    JSON.parse(localStorage.getItem("monPanier")).forEach((article, index) => {
-        let articleLigne = create("tr", "id", "articleLigne");
-        let articleImage = create("img", "id", "articleImage");
-        let articleNom = create("td", "id", "articleNom");
-        let articlePrix = create("td", "id", "articlePrix");
+    let articleLigne = create("tr", "id", "articleLigne");
+    let articleImage = create("img", "id", "articleImage");
+    let articleNom = create("td", "id", "articleNom");
+    let articlePrix = create("td", "id", "articlePrix");
 
-
-        //Attributs suplémentaires
-        articleImage.setAttribute("src", article.imageUrl);
-
-        //Hiérarchisation des élements crées
-        tableauPanier.appendChild(articleLigne);
-        articleLigne.appendChild(articleImage);
-        articleLigne.appendChild(articleNom);
-        articleLigne.appendChild(articlePrix);
-
-        //Attribution des données aux élements créees
-        articleNom.textContent = article.name;
-        articlePrix.textContent = euro.format(data.price / 100);
-
-    });
-}
-
-/*-------------mise en page de la page produit si introuvable--------------------*/
-
-const errorProduct = () => {
-    //On selectionne la section "card"
-    let errors = document.getElementById("card");
-
-    //on creer l'affichage de la page
-    let errorContainer = create("div", "class", "Block");
-    let errorMessage = create("p", "class", "error-product");
-    let redirectionLink = create("a", "href", "index.html");
+    //Attributs suplémentaires
+    articleImage.setAttribute("src", article.imageUrl);
 
     //Hiérarchisation des élements crées
-    errors.appendChild(errorContainer);
-    errorContainer.appendChild(errorMessage);
-    errorContainer.appendChild(redirectionLink);
+    tableauPanier.appendChild(articleLigne);
+    articleLigne.appendChild(articleImage);
+    articleLigne.appendChild(articleNom);
+    articleLigne.appendChild(articlePrix);
 
     //Attribution des données aux élements créees
-    errorMessage.textContent = "Ce produit n'est pas répertorié dans notre catalogue ou n'est plus disponible";
-    redirectionLink.textContent = "Voir nos produits";
+    articleNom.textContent = article.name;
+    articlePrix.textContent = article.price / 100;
 }
+
 
 /*-------------Création de la mise en page de la page produit--------------------*/
 

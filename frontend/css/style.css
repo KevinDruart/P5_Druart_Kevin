@@ -245,4 +245,29 @@ footer {
 /*ORDER*/
 
 /*CART*/
+.title {
+    text-align: center;
+}
 
+.cartContain {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-evenly;
+}
+
+.cartProducts {
+    width: 50%;
+    MARGIN-LEFT: 5%;
+}
+
+img#articleImage {
+    width: 100%;
+}
+
+table.tableauPanier {
+    WIDTH: 40%;
+}
+.cartForm {
+    width: 50%;
+}
