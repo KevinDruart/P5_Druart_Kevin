@@ -1,50 +1,63 @@
-/*on recupere l'url actuel et on y extrait l'Id du produit*/
-const urlParams = new URLSearchParams(window.location.search);
-const productId = urlParams.get('id');
 
-console.log(productId);/*ok*/
-
-let selectedTeddie;
+/*---------------------Selection du produit en fonction de id--------------------*/
 
 const selectionProduit = () => {
-  fetch(url + "/" + productId).then(function(response){
-      response.json().then(function(data){
-          selectedTeddie = data;
+  /*on recupere l'url actuel et on y extrait l'Id du produit*/
+  const urlParams = new URLSearchParams(window.location.search);
+  const productId = urlParams.get('id');
+  console.log('id produit est le ' + productId);
+  const teddy = getRequest("http://localhost:3000/api/teddies/" + productId);
+  teddy
+    .then((data) => {
+      cardProduct(data)
+    })
+    .catch((error) => {
+      console.log('pas le bon produit');
+      //On selectionne la section "descriptionproduit"
+      let errors = document.getElementById("error");
 
-          /*On vient cibler la balise div ayant pour id Descriptionproduit*/
-          let descriptionProduit = document.getElementById("descriptionproduit");
+      //on creer l'affichage de la page
+      let errorContainer = create("div", "class", "Block");
+      let errorMessage = create("h2", "class", "error-product");
 
-          /*On crée l'affichage de la description du produit séléctionné par l'utilisateur*/
-          let descriptionContainer = create("div", "class", "Blockdescription");
-          let descriptionProduitB1 = create("div", "class", "B1description");
-          let descriptionProduitB2 = create("div", "class", "B2description");
-          let descriptionProduitNom = create("h2", "class", "Nomdescription");
-          let descriptionProduitPrix = create("p", "class", "Prixdescription");
-          let descriptionProduitImage = create("img", "src", data.imageUrl);
-          let descriptionProduitDescription = create("p", "class", "Descriptionproduit");
-          
-          /*Attributs suplémentaires*/
-          descriptionProduitImage.setAttribute("alt", "Photographie de l'appareil.");
-          descriptionProduitImage.setAttribute("class", "Imagedescription");
+      //Hiérarchisation des élements crées
+      errors.appendChild(errorContainer);
+      errorContainer.appendChild(errorMessage);
 
-          /*Hiérarchisation des élements crées*/
-          descriptionProduit.appendChild(descriptionContainer);
-          descriptionContainer.appendChild(descriptionProduitB1);
-          descriptionContainer.appendChild(descriptionProduitB2);
-          descriptionProduitB1.appendChild(descriptionProduitImage);
-          descriptionProduitB2.appendChild(descriptionProduitNom);
-          descriptionProduitB2.appendChild(descriptionProduitPrix);
-          descriptionProduitB2.appendChild(descriptionProduitDescription);
+      //Attribution des données aux élements créees
+      errorMessage.textContent = "Ce produit n'est pas répertorié dans notre catalogue ou n'est plus disponible";
+      let descrive = document.querySelector('descriptionproduit');
+      descrive.style.display = none;
 
-          /*Attribution des données aux élements créees*/
-          descriptionProduitNom.textContent = data.name;
-          descriptionProduitPrix.textContent = data.price / 100 + " " + "euros";
-          descriptionProduitDescription.textContent = data.description;
+    });
 
-      })
-  })
 }
 selectionProduit();
+
+/*------------------------Ajouter un article au panier---------------------------*/
+
+const ajouterAuPanier = (article) => {
+  console.log(article);
+  //declaration de la variable saveLocalStorage stock les valeur envoyer au localstorage
+  let monPanier = JSON.parse(localStorage.getItem("produit"));
+  //si des produits sont deja dans le local storage
+  if (monPanier) {
+    monPanier.push(article);
+    localStorage.setItem("produit", JSON.stringify(monPanier));
+    alert("L'article a bien été ajouté à votre panier.")
+  }
+  //sinon
+  else {
+    monPanier = [];
+    monPanier.push(article);
+    console.log(monPanier);
+    localStorage.setItem("produit", JSON.stringify(monPanier));
+  }
+
+};
+
+
+
 
 
 
