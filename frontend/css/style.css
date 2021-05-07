@@ -1,11 +1,15 @@
 /*GENERALS*/
-header {
-    display: flex;
-    justify-content: center;
+.fs-4 {
+    PADDING-RIGHT: 30%;
 }
 
 .logo {
     text-decoration: none;
+}
+
+#Option:hover {
+    color:white;
+    background-color: #008CBA;
 }
 
 .menu {
@@ -14,6 +18,8 @@ header {
     align-content: center;
     justify-content: center;
     align-items: center;
+    box-shadow: 1px 1px 1px 1px lightgrey, 0px 0px 0px 0px grey;
+    MARGIN-TOP: 5%;
 }
 
 .nav {
@@ -33,7 +39,7 @@ li {
 
 footer {
     text-align: center;
-    background-color: lightslategray;
+    background-color: lightgray;
 }
 
 /*INDEX*/
@@ -43,15 +49,19 @@ footer {
 
 .Block {
     width: 100%;
-    flex-direction: column;
     display: flex;
+    flex-direction: column;
     margin-bottom: 20px;
-    border-radius: 3%;
-    box-shadow: 1px 1px 1px 1px grey, 0px -1px 0px grey;
+    box-shadow: 1px 1px 1px 1px lightgrey, 0px 0px 0px 0px grey;
 }
 
 .B1 {
-    width: 98%;
+    width: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
 }
 
 .Imageproduit {
@@ -66,6 +76,7 @@ footer {
 
 .Prixproduit {
     MARGIN: 2PX 0PX 2PX 0PX;
+    color: #008CBA;
 }
 
 .Nomproduits {
@@ -73,29 +84,71 @@ footer {
 }
 
 .B2 a {
-        background-color: #1c87c9;
-        border: none;
-        border-radius: 0% 0% 3% 3%;
-        color: white;
-        padding: 20px 34px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 20px;
-        margin: 4px 2px;
-        cursor: pointer;
+    background-color: #008CBA;
+    color: white;
+    padding: 10px 0px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    cursor: pointer;
 }
+
+.B2 a:hover {
+    border: dashed #008CBA;
+    background-color: white;
+    color: #008CBA;
+}
+
+/*MEDIA QUERIES INDEX*/
+/*480px*/
+@media only screen and (min-width: 480px) {
+    .Block {
+        flex-direction: row;
+    }
+    .B1 {
+        width: 60%;
+    }
+    .B2 {
+        MARGIN-LEFT: auto;
+        MARGIN-RIGHT: auto;
+    }
+    .B2 a {
+        padding: 10px 50px;
+    }
+  }
+/*768px*/
+  @media only screen and (min-width: 768px) {
+    .Block {
+        width: 60%;
+        MARGIN-LEFT: auto;
+        margin-right: auto;
+    }
+    
+  }
 
 /*PRODUCT*/
-.Blockdescription {
-    display:flex;
-    flex-direction: column;
+
+/*disposition page produit*/
+.order1 { grid-area: img; }
+.order2 { grid-area: description; }
+.order3 { grid-area: price; }
+
+
+#Blockdescription {
+  display: grid;
+  grid-template-areas:
+    'img'
+    'description'
+    'price';
+  grid-gap: 10px;
+  padding: 10px;
 }
 
-.B1description {
-
+#Blockdescription > div {
+  text-align: center;
+  font-size: 20px;
 }
-
+     
 .Imagedescription {
     width: 100%;
 }
@@ -105,6 +158,90 @@ footer {
     flex-direction: column;
     text-align: center;
 }
+
+#Option {
+    MARGIN-BOTTOM: 5%;
+}
+
+.select-option {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 10px;
+}
+/*Gestion taille police page produit*/
+.Prixdescription {
+    font-size: 1em;
+    color: #008CBA;
+}
+
+.Descriptionproduit {
+    font-size: 0.7em;
+}
+
+.labelselect {
+    font-size: 0.8em;
+}
+
+.couleurs {
+    font-size: 1em;
+}
+
+/*bouton panier*/
+
+#panier {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #008CBA;
+  }
+  
+  #panier:hover {
+    background-color: #008CBA;
+    color: white;
+  }
+
+/*MEDIA QUERIES PRODUCT*/
+/*480 px*/
+@media only screen and (min-width: 480px) {
+  body {
+      background-color: lightskyblue;
+  }
+    
+  }
+
+  /*768 px*/
+  @media only screen and (min-width: 768px) {
+
+    .order1 {
+        grid-area: img; 
+     }
+   .order2 { 
+       grid-area: description; 
+     }
+   .order3 {
+         grid-area: price; 
+     }
+   
+   #Blockdescription {
+     display: grid;
+     grid-template-areas:
+       'img img description descritpion'
+       'img img price price';
+     grid-gap: 10px;
+     padding: 10px;
+   }
+   
+   #Blockdescription > div {
+     text-align: center;
+     padding: 20px 0;
+     font-size: 30px;
+   }
+      
+    }
 /*ORDER*/
 
 /*CART*/
