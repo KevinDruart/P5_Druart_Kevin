@@ -1,37 +1,18 @@
-/*-------------Récupération de tout les produits dans localstorage---------------*/
-/*const cartAdd = () => {
+
+const affichagePanier = () => {
+  //recuperation des produits dans le localstorage
   const monPanier = JSON.parse(localStorage.getItem("produit"));
   console.log(monPanier);
   monPanier
-    .then (())
-  cart(produit);
+    .then((article) => {
+      //Création d'une ligne dans le tableau pour chaque produit composant le panier
+      monPanier.forEach((article) => {
+        console.log(article);
+        cart(article);
+      });
+
+    })
 }
-cartAdd();*/
-const client = () => {
-const panierClient = new promise((resolve, reject) => {
-  const monPanier = JSON.parse(localStorage.getItem("produit"));
-  console.log(monPanier);
-  resolve(produit);
-
-});
-
-panierClient.then ((value) => {
-  console.log(value);
-});
-
-console.log(panierClient);
-}
-
-/*
-const cartAdd = () => {
-  //declaration de la variable saveLocalStorage stock les valeur envoyer au localstorage
-  let monPanier = JSON.parse(localStorage.getItem("produit"));
-  console.log(monPanier);
-  cart(monPanier);
-}
-cartAdd();*/
-
-
-
+affichagePanier();
 
 
