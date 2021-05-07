@@ -5,32 +5,38 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
+  <link rel="icon" type="image/png" href="./images/favicon.png" />
   <title>Accueil Orinoco</title>
 
   <!-- CSS -->
   <link href="./css/style.css" rel="stylesheet">
+  <!--bootstrap css-->
+<link href="./css/bootstrap.min.css" rel="stylesheet">
+
 </head>
+
 
 <body>
   <!--HEADER-->
-  <header>
-    <a href="index.html" class="logo">
-      <span>Orinoco</span>
-    </a>
-  </header>
-  <!--HEADER END-->
-  <!--MENU NAVIGATE-->
-  <div class="menu">
-    <ul class="nav">
-      <li class="nav-item"><a href="index.html" class="nav-link active">Accueil</a></li>
-      <li class="nav-item"><a href="panier.html" class="nav-link">Panier</a></li>
-    </ul>
+  <div class="container header" id="myHeader">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+      <a href="index.html" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+        <span class="fs-4">Orinoco</span>
+      </a>
+  
+      <ul class="nav nav-pills">
+        <li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
+        <li class="nav-item"><a href="panier.html" class="nav-link">Paniers</a></li>
+      </ul>
+    </header>
   </div>
-  <!--MENU NAVIGATE END-->
+  
+  <!--HEADER END-->
 
 
   <main>
-    <h2 class="titlesection">Quelques produits</h2>
+    <h2 class="titlesection">Nos produits</h2>
     <section id="card">
 
     </section>
