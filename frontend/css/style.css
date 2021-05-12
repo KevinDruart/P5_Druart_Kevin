@@ -245,29 +245,17 @@ footer {
 /*ORDER*/
 
 /*CART*/
-.title {
-    text-align: center;
+
+.row {
+
+    margin-right: 0px; 
+    margin-left: 0px; 
 }
 
-.cartContain {
-    display: flex;
-    flex-direction: row;
-    align-content: center;
-    justify-content: space-evenly;
-}
-
-.cartProducts {
-    width: 50%;
-    MARGIN-LEFT: 5%;
+.lignePrix {
+    list-style: none;
 }
 
 img#articleImage {
     width: 100%;
-}
-
-table.tableauPanier {
-    WIDTH: 40%;
-}
-.cartForm {
-    width: 50%;
 }

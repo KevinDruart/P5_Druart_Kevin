@@ -1,61 +1,69 @@
+
+
 /*-------------Création de la mise en page de la page panier--------------------*/
 
-const cart = (article) => {
+const affichagePanier = (article, index) => {
 
-    //on vient cibler la balise ayant pour id cart
-    let createCart = document.getElementById("cart");
+    //on selectionne la balise "cart-info" pour y injecter nos elements
+    let aside = document.getElementById("cart-info");
 
-    //on creer l'affichage de la page
-    let title = create("h1", "class", "title");
-    let cartContainer = create("div", "class", "cartContain");
-    let cartProducts = create("div", "class", "cartProducts");
-    let tableauPanier = create("table", "class", "tableauPanier");
-    let tableauHeaderLigne = create("tr", "class", "tableauHeaderLigne");
-    let tableauHeaderImage = create("th");
-    let tableauHeaderNom = create("th");
-    let tableauHeaderPrix = create("th");
-    let cartForm = create("div", "class", "cartForm");
-    let titleForm = create("p", "class", "title-Form");
-
-    //Attributs supplémentaires
-
-    //Hierarchisation des elements creer
-    createCart.appendChild(title);
-    createCart.appendChild(cartContainer);
-
-    cartContainer.appendChild(cartProducts);
-    cartProducts.appendChild(tableauPanier);
-    tableauPanier.appendChild(tableauHeaderLigne);
-    tableauHeaderLigne.appendChild(tableauHeaderImage);
-    tableauHeaderLigne.appendChild(tableauHeaderNom);
-    tableauHeaderLigne.appendChild(tableauHeaderPrix);
-    cartContainer.appendChild(cartForm);
-    cartForm.appendChild(titleForm);
-
-    //Attribution des données aux élements créees
-    title.textContent = "Votre panier:"
-    tableauHeaderImage.textContent = "Article(s)";
-    tableauHeaderNom.textContent = "Nom(s)";
-    tableauHeaderPrix.textContent = "Prix";
-    titleForm.textContent = "Avant de valider et payer votre commande, veuillez renseigner certaines informations:";
-
-    let articleLigne = create("tr", "id", "articleLigne");
-    let articleImage = create("img", "id", "articleImage");
-    let articleNom = create("td", "id", "articleNom");
-    let articlePrix = create("td", "id", "articlePrix");
-
-    //Attributs suplémentaires
-    articleImage.setAttribute("src", article.imageUrl);
+    //Création du tableau
+    //entete tableau
+    let infoCart = create("h4", "class", "d-flex justify-content-between align-items-center mb-3")
+    let cartLength = create("span", "id", "contenance");
+    let cartLengthNumber = create("span", "class", "badge bg-primary rounded-pill");
+    //liste article
+    let list = create("ul", "class", "list-group mb-3");
+    //footer list
+    let footerLigne = create("li", "class", "lignePrix");
+    footerText = create("span");
+    footerPrixTotal = create("strong");
 
     //Hiérarchisation des élements crées
-    tableauPanier.appendChild(articleLigne);
-    articleLigne.appendChild(articleImage);
-    articleLigne.appendChild(articleNom);
-    articleLigne.appendChild(articlePrix);
+    aside.appendChild(infoCart);
+    infoCart.appendChild(cartLength);
+    infoCart.appendChild(cartLengthNumber);
+    aside.appendChild(list);
 
     //Attribution des données aux élements créees
-    articleNom.textContent = article.name;
-    articlePrix.textContent = article.price / 100;
+    cartLength.textContent = "Nombre d'article(s)";
+    cartLengthNumber.textContent = monPanier.length;
+
+    //Création d'une ligne dans le tableau pour chaque produit composant le panier
+    monPanier.forEach((article, index) => {
+        let articleLigne = create("li", "class", "list-group-item d-flex justify-content-between lh-sm");
+        let infoArticle = create("div");
+        let titleArticle = create("h6", "class", "my-0");
+        let articleImage = create("img", "id", "articleImage");
+        let articlePrix = create("span", "class", "text-muted");
+
+        //Attributs suplémentaires
+        articleImage.setAttribute("src", article.imageUrl);
+
+        //Hiérarchisation des élements crées
+        list.appendChild(articleLigne);//ul--li
+        articleLigne.appendChild(infoArticle);//li--div
+        infoArticle.appendChild(titleArticle);//div--h6
+        infoArticle.appendChild(articleImage)//div--img
+        articleLigne.appendChild(articlePrix);//li--span
+
+        //Attribution des données aux élements créees
+        titleArticle.textContent = article.name;
+        articlePrix.textContent = euro.format(article.price / 100);
+    });
+
+    //Création de la ligne du bas du tableau affichant le prix total de la commande
+    list.appendChild(footerLigne);
+    footerLigne.appendChild(footerText);
+    footerLigne.appendChild(footerPrixTotal);
+
+    monPanier.forEach(priceArticle => {
+        total += priceArticle.price / 100;
+    });
+
+    //attribution des donnees aux elements creees
+    footerText.textContent = "Total"
+    footerPrixTotal.textContent = euro.format(total);
 }
 
 
@@ -154,4 +162,10 @@ const createProduct = (teddy) => {
     produitLien.textContent = "Voir plus";
 }
 
+/*------------ajout du nombre d'article dans le panier sur la nav----------*/
+//on selectionne la balise 'panier-length' pour y injecter nos elements
+let panierLength = document.getElementById('panierLength');
+
+//Attribution des données aux élements créees
+panierLength.textContent = (monPanier.length);
 
