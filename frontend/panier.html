@@ -13,8 +13,10 @@
   <link href="./css/style.css" rel="stylesheet">
   <!--bootstrap css-->
   <link href="./css/bootstrap.min.css" rel="stylesheet">
-  <!-- javascript -->
-  <script src="js/panier.js" async></script>
+  <!-- font awesome -->
+  <script src="https://kit.fontawesome.com/490f3c0b00.js" crossorigin="anonymous"></script>
+
+</head>
 
 <body>
   <div class="container">
@@ -27,16 +29,93 @@
       </a>
 
       <ul class="nav nav-pills">
-        <li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
-        <li class="nav-item"><a href="panier.html" class="nav-link">Paniers</a></li>
+        <li class="nav-item">
+          <a href="index.html" class="nav-link active">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="panier.html" class="nav-link">Paniers (<span id="panierLength">0</span>)</a>
+        </li>
       </ul>
     </header>
   </div>
   <main>
-    <section id="cart">
+    <div class="py-5 text-center">
+      <h2>Mon panier</h2>
+      <p id="panierVide">Votre panier est vide.</p>
+    </div>
+    <section id="shop" class="row g-5">
+      <!--Recapitulatif panier-->
+      <aside id="cart-info" class="col-md-5 col-lg-4 order-md-last">
+        <!--si le panier est vide le texte ci-dessous apparait-->
+        
+      </aside>
+      <!--Fin du recap panier-->
+      <!--Formulaire de livraison-->
+      <article id="form-checkout" class="col-md-7 col-lg-8">
 
+        <h4 class="mb-3">Adresse de livraison</h4>
+        <form class="needs-validation" novalidate>
+          <div class="row g-3">
+            <div class="col-sm-6">
+              <label for="firstName" class="form-label">Prénom</label>
+              <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+              <div class="invalid-feedback">
+                Votre prénom est requis.
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="lastName" class="form-label">Nom</label>
+              <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+              <div class="invalid-feedback">
+                Votre nom est requis.
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" placeholder="orinoco@example.com">
+              <div class="invalid-feedback">
+                Merci d'entrer une adresse email valide pour continuer.
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="address" class="form-label">Addresse</label>
+              <input type="text" class="form-control" id="address" placeholder="123 rue orinoco" required>
+              <div class="invalid-feedback">
+                Merci d'entrer une adresse.
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="address2" class="form-label">Complément d'adresse <span class="text-muted">(Optionnel)</span></label>
+              <input type="text" class="form-control" id="address2" placeholder="Appartement,Bat,Digicode...">
+            </div>
+            <div class="col-md-5">
+              <label for="state" class="form-label">Ville</label>
+              <input type="text" class="form-control" id="state" placeholder="Paris" required>
+              <div class="invalid-feedback">
+                Merci d'entrer une ville.
+              </div>
+            </div>
+            <div class="col-md-5">
+              <label for="zip" class="form-label">Code postal</label>
+              <input type="text" class="form-control" id="zip" placeholder="95000" required>
+              <div class="invalid-feedback">
+                Merci d'entrer un code postal.
+              </div>
+          </div>
+
+          <hr class="my-10">
+          <!--bouton valider-->
+          <button class="w-100 btn btn-primary btn-lg" type="submit">Valider ma commande</button>
+        </form>
+        <!--fin du formulaire livraison-->
+      </article>
     </section>
   </main>
+  <!--Pied de page-->
   <footer class="footer mt-auto py-3 bg-light">
     <div class="container">
       <span class="text-muted">Orinoco. Tout droit reservé 2021.</span>

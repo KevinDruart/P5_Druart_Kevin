@@ -45,13 +45,15 @@ const ajouterAuPanier = (article) => {
     monPanier.push(article);
     localStorage.setItem("produit", JSON.stringify(monPanier));
     alert("L'article a bien été ajouté à votre panier.")
+    location.reload();
   }
   //sinon
   else {
     monPanier = [];
     monPanier.push(article);
-    console.log(monPanier);
     localStorage.setItem("produit", JSON.stringify(monPanier));
+    alert("L'article a bien été ajouté à votre panier.")
+    location.reload();
   }
 
 };
