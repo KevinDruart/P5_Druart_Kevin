@@ -26,8 +26,9 @@ const selectionProduit = () => {
 
       //Attribution des données aux élements créees
       errorMessage.textContent = "Ce produit n'est pas répertorié dans notre catalogue ou n'est plus disponible";
-      let descrive = document.querySelector('descriptionproduit');
-      descrive.style.display = none;
+
+      document.getElementById('descriptionproduit').remove();
+
 
     });
 
