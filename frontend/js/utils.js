@@ -16,5 +16,5 @@ const euro = new Intl.NumberFormat('fr-FR', {
 
 //declaration de la variable monPanier qui stock les valeur envoyer au ou du localstorage
 let monPanier = JSON.parse(localStorage.getItem("produit"));
-console.log(monPanier.length);
+
 
