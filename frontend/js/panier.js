@@ -13,6 +13,7 @@ if (monPanier.length > 0) {
 //document.getElementById('form-checkout').remove();
 
 
+/*------------------Vérification des données du formulaire------------------------- */
 // recupere tout ce qui est dans 'needs-validation'
 var forms = document.querySelectorAll('.needs-validation')
 
@@ -27,9 +28,11 @@ Array.prototype.slice.call(forms)
       form.classList.add('was-validated')
     }, false)
   })
-/*FORMULAIRE*/
-/*Validation de formulaire*/
-//Création de l'objet à envoyer, regroupant le formulaire et les articles
+
+/*---------------------------------FORMULAIRE-------------------------------------*/
+
+//Création de l'objet à envoyer, regroupant les donnees formulaire et les articles commander
+
 const commandeClient = {
   contact: {},
   products: [],
