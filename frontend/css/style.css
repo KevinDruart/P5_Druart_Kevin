@@ -246,16 +246,76 @@ footer {
 
 /*CART*/
 
-.row {
 
-    margin-right: 0px; 
-    margin-left: 0px; 
+
+section#form-checkout {
+    width: 90%;
+    DISPLAY: FLEX;
+    FLEX-DIRECTION: column;
+    MARGIN-LEFT: auto;
+    MARGIN-RIGHT: auto;
+    FONT-SIZE: 0.8EM;
 }
 
-.lignePrix {
-    list-style: none;
+thead {
+    background: #008CBA;
+    color:#fff
 }
 
-img#articleImage {
-    width: 100%;
+thead, tbody {
+    text-align: center;
 }
+
+h4.titlePanier {
+    font-size: 1em;
+    DISPLAY: FLEX;
+    JUSTIFY-CONTENT: SPACE-AROUND;
+}
+
+table.tableau {
+    font-size: 0.8EM;
+    MARGIN-LEFT: auto;
+    MARGIN-RIGHT: auto;
+    WIDTH: 90%;
+}
+
+button#deletePanier {
+    FONT-SIZE: 0.8EM;
+}
+
+img.articleImage {
+    width: 60%;
+}
+
+h4.adress {
+    PADDING-TOP: 5%;
+}
+
+button.confirm-panier {
+    font-size: 1em;
+    MARGIN-TOP: 5%;
+    MARGIN-BOTTOM: 5%;
+    float: right;
+}
+
+/*MEDIA QUERIES cart*/
+
+/*480 px*/
+
+/*768 px*/
+@media only screen and (min-width: 768px) {
+    .body {
+        display: flex;
+        flex-direction: row-reverse;
+        width: 95%;
+        MARGIN-LEFT: auto;
+        MARGIN-RIGHT: auto;
+    }
+    #cart-info {
+        WIDTH: 45%;
+    }
+    img.articleImage {
+        width: 50%;
+    }
+      
+    }

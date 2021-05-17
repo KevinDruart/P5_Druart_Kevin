@@ -1,4 +1,15 @@
+/*---------------------erreur de connexion API affichage----------------------- */
+const errorAPI = () => {
+    //on selectionne la balise "cache-error"
+    let cacheError = document.getElementById("cache-error");
+    console.log(cacheError);
 
+    //on change le titre pour prevenir d'une erreur 
+    cacheError.textContent = "Une erreur est survenu et rend notre site indisponible, nos equipes travaille sur le probleme. Veuillez nous en excuser, nous vous recommandons de revenir plus tard";
+
+    //on regle le design
+    cacheError.style.fontSize = '1em';
+}
 
 /*-------------Création de la mise en page de la page panier--------------------*/
 
@@ -7,55 +18,117 @@ const affichagePanier = (article, index) => {
     //on selectionne la balise "cart-info" pour y injecter nos elements
     let aside = document.getElementById("cart-info");
 
-    //Création du tableau
-    //entete tableau
-    let infoCart = create("h4", "class", "d-flex justify-content-between align-items-center mb-3")
+    //Recap panier rapide 
+    let infoCart = create("h4", "class", "titlePanier")
     let cartLength = create("span", "id", "contenance");
     let cartLengthNumber = create("span", "class", "badge bg-primary rounded-pill");
-    //liste article
-    let list = create("ul", "class", "list-group mb-3");
-    //footer list
-    let footerLigne = create("li", "class", "lignePrix");
-    footerText = create("span");
-    footerPrixTotal = create("strong");
 
-    //Hiérarchisation des élements crées
+    //Hierarchisation
     aside.appendChild(infoCart);
     infoCart.appendChild(cartLength);
     infoCart.appendChild(cartLengthNumber);
-    aside.appendChild(list);
 
     //Attribution des données aux élements créees
     cartLength.textContent = "Nombre d'article(s)";
     cartLengthNumber.textContent = monPanier.length;
 
+    //Création du tableau
+    let list = create("table", "class", "tableau");
+
+    //on creer l'entête du tableau
+    let headerTableau = create("thead", "class", "header-table");
+
+    let ligneHeader = create("tr", "class", "ligneHeader");
+
+    let imgProductHeader = create("th", "class", "imgHeader column1");
+    let nameProductHeader = create("th", "class", "nameHeader column2");
+    let priceProductHeader = create("th", "class", "priceHeader column3");
+    let actionHeader = create("th", "class", "actionHeader column4");
+
+    //Hiérarchisation des élements de l'entête du tableau
+    aside.appendChild(list);
+    list.appendChild(headerTableau);
+    headerTableau.appendChild(ligneHeader);
+    ligneHeader.appendChild(imgProductHeader);
+    ligneHeader.appendChild(nameProductHeader);
+    ligneHeader.appendChild(priceProductHeader);
+    ligneHeader.appendChild(actionHeader);
+
+    //Attribution données au elements de l'entête
+    imgProductHeader.textContent = "Image";
+    nameProductHeader.textContent = "Produit";
+    priceProductHeader.textContent = "Prix";
+    actionHeader.textContent = "Supprimer";
+
+
+    //corps du tableau 
+    let articleLigne = create("tbody", "class", "corpsTableau");
+
+
     //Création d'une ligne dans le tableau pour chaque produit composant le panier
     monPanier.forEach((article, index) => {
-        let articleLigne = create("li", "class", "list-group-item d-flex justify-content-between lh-sm");
-        let infoArticle = create("div");
-        let titleArticle = create("h6", "class", "my-0");
-        let articleImage = create("img", "id", "articleImage");
-        let articlePrix = create("span", "class", "text-muted");
+        let infoArticle = create("tr");
+        let articleImageBox = create("td", "class", "imgArticle column1")
+        let articleImage = create("img", "class", "articleImage");
+        let titleArticle = create("td", "class", "nameArticle column2");
+        let articlePrix = create("td", "class", "articlePrice column3");
+        let arcticleActionBox = create("td", "class", "arcticleAction column4")
+        let articleAction = create("i", "id", index);
 
         //Attributs suplémentaires
         articleImage.setAttribute("src", article.imageUrl);
+        articleAction.setAttribute("alt", "Retirer l'article du panier.");
+        articleAction.setAttribute("class", "fas fa-trash-alt"); //Logo poubelle pour supprimer l'article du panier.
+
+        /*Suppression de l'article en cliquant sur la poubelle*/
+        articleAction.addEventListener("click", function (event) {
+            suppressionArticle(event.target.id);
+        });
 
         //Hiérarchisation des élements crées
-        list.appendChild(articleLigne);//ul--li
-        articleLigne.appendChild(infoArticle);//li--div
-        infoArticle.appendChild(titleArticle);//div--h6
-        infoArticle.appendChild(articleImage)//div--img
-        articleLigne.appendChild(articlePrix);//li--span
+        list.appendChild(articleLigne);
+        articleLigne.appendChild(infoArticle);
+        infoArticle.appendChild(articleImageBox);
+        articleImageBox.appendChild(articleImage);
+        infoArticle.appendChild(titleArticle);
+        infoArticle.appendChild(articlePrix);
+        infoArticle.appendChild(arcticleActionBox);
+        arcticleActionBox.appendChild(articleAction);
 
         //Attribution des données aux élements créees
         titleArticle.textContent = article.name;
         articlePrix.textContent = euro.format(article.price / 100);
     });
 
-    //Création de la ligne du bas du tableau affichant le prix total de la commande
+    //Création de la ligne du pied de tableau affichant le prix total de la commande
+    let footerLigne = create("tfoot", "class", "lignePrix");
+    let footerText = create("td", "class", "total column1");
+    let footerPrixTotal = create("td", "class", "prix-total");
+    let space = create("td")
+    let deletePanierBox = create("td", "class", "deletePanierBox");
+    let deletePanier = create("button", "id", "deletePanier");
+
+    //Attribut supplémentaires
+    deletePanier.setAttribute("class", "btn btn-outline-danger rounded-pill");
+
+    //Hierarchisation
     list.appendChild(footerLigne);
     footerLigne.appendChild(footerText);
     footerLigne.appendChild(footerPrixTotal);
+    footerLigne.appendChild(space);
+    footerLigne.appendChild(deletePanierBox);
+    deletePanierBox.appendChild(deletePanier);
+    /*Suppression de l'article en cliquant sur la poubelle*/
+    deletePanier.addEventListener("click", (e) => {
+        //annule l'action par defaut
+        e.preventDefault();
+        //vide le localStorage
+        localStorage.clear();
+        //confirmation que le panier a bien etait vider
+        alert('le panier a bien etait vider!')
+        //rafraichissement de la page
+        location.reload();
+    });
 
     monPanier.forEach(priceArticle => {
         total += priceArticle.price / 100;
@@ -64,6 +137,8 @@ const affichagePanier = (article, index) => {
     //attribution des donnees aux elements creees
     footerText.textContent = "Total"
     footerPrixTotal.textContent = euro.format(total);
+    deletePanier.textContent = "Vider";
+
 }
 
 
@@ -163,6 +238,7 @@ const createProduct = (teddy) => {
 }
 
 /*------------ajout du nombre d'article dans le panier sur la nav----------*/
+
 //on selectionne la balise 'panier-length' pour y injecter nos elements
 let panierLength = document.getElementById('panierLength');
 
