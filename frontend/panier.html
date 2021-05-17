@@ -32,96 +32,85 @@
         <li class="nav-item">
           <a href="index.html" class="nav-link active">Home</a>
         </li>
+
         <li class="nav-item">
-          <a href="panier.html" class="nav-link">Paniers (<span id="panierLength">0</span>)</a>
+
+          <a href="panier.html" class="nav-link">Paniers <span id="panierLength"
+              class="badge bg-primary rounded-pill">0</span></a>
         </li>
       </ul>
     </header>
   </div>
   <main>
-    <div class="py-5 text-center">
+    <div class="text-center header">
       <h2>Mon panier</h2>
       <!--si le panier est vide le texte ci-dessous apparait-->
       <p id="panierVide">Votre panier est vide.</p>
     </div>
-    <section id="shop" class="row g-5">
-      
-      <!--Recapitulatif panier-->
-      <aside id="cart-info" class="col-md-5 col-lg-4 order-md-last">
 
-      </aside>
+
+    <!--Recapitulatif panier-->
+    <div class="body">
+      <div id="cart-info" class="panierRecap">
+
+      </div>
       <!--Fin du recap panier-->
 
       <!--Formulaire de livraison-->
-      <article id="form-checkout" class="col-md-7 col-lg-8">
+      <section id="form-checkout" class="formSide">
 
-        <h4 class="mb-3">Adresse de livraison</h4>
+        <h4 class="adress">Adresse de livraison</h4>
         <form id="form" class="needs-validation" novalidate>
-          <div class="row g-3">
-            <div class="col-sm-6">
-              <label for="firstName" class="form-label">Prénom</label>
-              <input type="text" class="form-control" id="firstName" name="Prénom" placeholder="" value="" required>
-              <div class="invalid-feedback">
-                Votre prénom est requis.
-              </div>
-            </div>
 
-            <div class="col-sm-6">
-              <label for="lastName" class="form-label">Nom</label>
-              <input type="text" class="form-control" id="lastName" name="Nom" placeholder="" value="" required>
-              <div class="invalid-feedback">
-                Votre nom est requis.
-              </div>
+          <div class="prenom">
+            <label for="firstName" class="form-label">Prénom</label>
+            <input type="text" class="form-control" id="firstName" name="Prénom" placeholder="" value="" required>
+            <div class="invalid-feedback">
+              Votre prénom est requis.
             </div>
+          </div>
+          <div class="nom">
+            <label for="lastName" class="form-label">Nom</label>
+            <input type="text" class="form-control" id="lastName" name="Nom" placeholder="" value="" required>
+            <div class="invalid-feedback">
+              Votre nom est requis.
+            </div>
+          </div>
 
-            <div class="col-12">
-              <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control" id="email" name="Email" placeholder="orinoco@example.com"
-                value="" required>
-              <div class="invalid-feedback">
-                Merci d'entrer une adresse email valide pour continuer.
-              </div>
-            </div>
 
-            <div class="col-12">
-              <label for="address" class="form-label">Addresse</label>
-              <input type="text" class="form-control" id="address" name="Adresse" placeholder="123 rue orinoco"
-                required>
-              <div class="invalid-feedback">
-                Merci d'entrer une adresse.
-              </div>
+          <div class="">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="Email" placeholder="orinoco@example.com" value=""
+              required>
+            <div class="invalid-feedback">
+              Merci d'entrer une adresse email valide pour continuer.
             </div>
+          </div>
 
-            <div class="col-12">
-              <label for="address2" class="form-label">Complément d'adresse <span
-                  class="text-muted">(Optionnel)</span></label>
-              <input type="text" class="form-control" id="address2" name="Complément"
-                placeholder="Appartement,Bat,Digicode...">
+          <div class="">
+            <label for="adDress" class="form-label">Adresse</label>
+            <input type="text" class="form-control" id="adDress" name="Adresse" placeholder="123 rue orinoco" required>
+            <div class="invalid-feedback">
+              Merci d'entrer une adresse.
             </div>
-            <div class="col-md-5">
-              <label for="ville" class="form-label">Ville</label>
-              <input type="text" class="form-control" id="ville" name="Ville" placeholder="Paris" required>
-              <div class="invalid-feedback">
-                Merci d'entrer une ville.
-              </div>
+          </div>
+          <div class="">
+            <label for="ville" class="form-label">Ville</label>
+            <input type="text" class="form-control" id="ville" name="Ville" placeholder="Paris" required>
+            <div class="invalid-feedback">
+              Merci d'entrer une ville.
             </div>
-            <div class="col-md-5">
-              <label for="cp" class="form-label">Code postal</label>
-              <input type="text" class="form-control" id="cp" name="Cp" placeholder="95000" required>
-              <div class="invalid-feedback">
-                Merci d'entrer un code postal.
-              </div>
-            </div>
+          </div>
 
-            <hr class="my-10">
-            <!--bouton valider-->
-            <button class="w-100 btn btn-primary btn-lg" type="submit">Valider ma commande</button>
+          <!--bouton valider-->
+          <button class="confirm-panier btn-outline-success btn-lg btn-block rounded-pill" type="submit">Valider ma
+            commande</button>
         </form>
         <!--fin du formulaire livraison-->
 
-      </article>
+      </section>
+    </div>
 
-    </section>
 
   </main>
 
