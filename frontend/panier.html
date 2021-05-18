@@ -19,6 +19,7 @@
 </head>
 
 <body>
+  <!--Debut header-->
   <div class="container">
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
       <a href="index.html" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
@@ -41,77 +42,58 @@
       </ul>
     </header>
   </div>
+  <!--Fin du header-->
+
   <main>
+    <!--titre de la page-->
     <div class="text-center header">
       <h2>Mon panier</h2>
       <!--si le panier est vide le texte ci-dessous apparait-->
       <p id="panierVide">Votre panier est vide.</p>
     </div>
 
-
-    <!--Recapitulatif panier-->
+    <!--Corps de la page-->
     <div class="body">
+      <!--Recapitulatif panier-->
       <div id="cart-info" class="panierRecap">
 
       </div>
       <!--Fin du recap panier-->
 
-      <!--Formulaire de livraison-->
+      <!--Coté Formulaire-->
       <section id="form-checkout" class="formSide">
-
+        <!--titre formulaire-->
         <h4 class="adress">Adresse de livraison</h4>
-        <form id="form" class="needs-validation" novalidate>
+        <!--formulaire-->
+        <form id="form" method="POST">
+          <!--Nom-->
+          <label for="lastName">Nom</label>
+          <input type="text" id="lastName" name="lastName" placeholder="Nom" required>
+          <div id="errorName">Votre nom est incorrecte.</div>
+          <!--Prenom-->
+          <label for="firstName">Prénom</label>
+          <input type="text" id="firstName" name="firstName" placeholder="Prénom" required>
+          <div id="errorFirstName">Votre prénom est incorrecte.</div>
+          <!--Adresse-->
+          <label for="address">Adresse</label>
+          <input type="text" id="address" name="address" placeholder="123 rue origino" required>
+          <!--Ville-->
+          <label for="Ville" class="labelform">Ville :</label>
+          <input type="text" id="ville" name="ville" placeholder="Paris" required>
+          <div id="errorCity">La ville saisi est incorrecte.</div>
+          <!--Email-->
+          <label for="email">Adresse email</label>
+          <input type="email" id="email" name="email" placeholder="exemple@origino.fr" required>
+          <div id="errorEmail">Veuillez entrer une adresse email valide.</div>
 
-          <div class="prenom">
-            <label for="firstName" class="form-label">Prénom</label>
-            <input type="text" class="form-control" id="firstName" name="Prénom" placeholder="" value="" required>
-            <div class="invalid-feedback">
-              Votre prénom est requis.
-            </div>
-          </div>
-          <div class="nom">
-            <label for="lastName" class="form-label">Nom</label>
-            <input type="text" class="form-control" id="lastName" name="Nom" placeholder="" value="" required>
-            <div class="invalid-feedback">
-              Votre nom est requis.
-            </div>
-          </div>
-
-
-          <div class="">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" name="Email" placeholder="orinoco@example.com" value=""
-              required>
-            <div class="invalid-feedback">
-              Merci d'entrer une adresse email valide pour continuer.
-            </div>
-          </div>
-
-          <div class="">
-            <label for="adDress" class="form-label">Adresse</label>
-            <input type="text" class="form-control" id="adDress" name="Adresse" placeholder="123 rue orinoco" required>
-            <div class="invalid-feedback">
-              Merci d'entrer une adresse.
-            </div>
-          </div>
-          <div class="">
-            <label for="ville" class="form-label">Ville</label>
-            <input type="text" class="form-control" id="ville" name="Ville" placeholder="Paris" required>
-            <div class="invalid-feedback">
-              Merci d'entrer une ville.
-            </div>
-          </div>
-
-          <!--bouton valider-->
-          <button class="confirm-panier btn-outline-success btn-lg btn-block rounded-pill" type="submit">Valider ma
-            commande</button>
+          <!--Bouton de validation-->
+          <input type="submit" id="confirmer-panier" value="Valider ma commande"></input>
         </form>
         <!--fin du formulaire livraison-->
-
       </section>
+      <!--Fin du coté formulaire-->
     </div>
-
-
+    <!--Fin du corps de la page-->
   </main>
 
   <!--Pied de page-->
@@ -120,11 +102,12 @@
       <span class="text-muted">Orinoco. Tout droit reservé 2021.</span>
     </div>
   </footer>
-  <!--FOOTER END-->
+  <!--Fin du pied de page-->
 
   <!--Javascript-->
   <script src="./js/request.js"></script>
   <script src="./js/utils.js"></script>
+
   <script src="./js/view.js"></script>
   <script src="./js/panier.js"></script>
 </body>
