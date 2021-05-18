@@ -7,7 +7,6 @@ const cartCheckout = () => {
   if (monPanier !== null) {
     document.getElementById('panierVide').remove();
     affichagePanier();
-
   }
   else {
     //si aucun produit dans mon panier, on cache le formulaire
@@ -35,57 +34,9 @@ const verifNavigator = () => {
 }
 /*---------------------------------FORMULAIRE-------------------------------------*/
 
-const formCheckout = () => {
-  //on selectionne les elements du formulaire
-  //le nom
-  let name = document.getElementById('lastName');
-  let errorName = document.getElementById('errorName');
-  //le prénom
-  let firstName = document.getElementById('firstName');
-  let errorFirstName = document.getElementById('errorFirstName');
-  //l'adresse
-  let address = document.getElementById('address');
-  //la ville
-  let city = document.getElementById('ville');
-  let errorCity = document.getElementById('errorCity');
-  //l'adresse email
-  let email = document.getElementById('email');
-  let errorEmail = document.getElementById('errorEmail');
-
-  //on cache les messages d'erreur
-  errorName.style.display = "none";
-  errorFirstName.style.display = "none";
-  errorCity.style.display = "none";
-  errorEmail.style.display = "none";
-
-  //on creer des expressions reguliere
-  const letter = /^[a-zA-Z]+$/;
-  const numberLetter = /^[0-9a-zA-Z]+$/;
-  const mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-
-  //on effectue des validation avant l'envoie
-  if (name.match(letter)) {
-    if (firstName.match(letter)) {
-      if (address.match(numberLetter)) {
-        if (city.match(letter)) {
-          if (email.match(mailFormat)) {
-            return true;
-          }
-
-        }
-
-      }
-
-    }
-
-  }
-
-}
-
-formCheckout();
 //creation de mon objet commande Client avec les donnees du formulaire et de mon panier
 const ticket = () => {
-  //creation de la variable de stockage
+  ////Création de l'objet à envoyer, regroupant le formulaire et les articles
   const commandClient = {
     //donnees du formulaire seront stocker ici
     contact: {},
@@ -98,7 +49,61 @@ const ticket = () => {
     e.preventDefault();
     //procede a une validation via les navigateurs 
     verifNavigator();
-  });
+    //Avant d'envoyer un formulaire, vérification que le panier n'est pas vide.
+    if (monPanier.length == 0) {
+      alert("Attention, votre panier est vide.");
+    }
+    else {
 
+      //Récupération des champs du formulaire
+      //le nom
+      let name = document.getElementById('lastName').value;
+      //le prénom
+      let firstName = document.getElementById('firstName').value;
+      //l'adresse
+      let address = document.getElementById('address').value;
+      //la ville
+      let city = document.getElementById('ville').value;
+      //l'adresse email
+      let email = document.getElementById('email').value;
+
+      //Création de l'objet formulaireObjet
+      commandClient.contact = {
+        firstName: firstName,
+        lastName: name,
+        address: address,
+        city: city,
+        email: email,
+      }
+      console.log(commandClient.contact);
+      //ajout des produit panier dans commandClient
+      monPanier.forEach(produits => {
+        commandClient.product.push(produits._id)
+
+      });
+      console.log(commandClient);
+    }
+    //on defini des options et methode d'envoi, le serveur attend du JSON
+    const options = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      method: "POST",
+      body: JSON.stringify(commandClient),
+    }
+
+    const sendTicket = getRequest("http://localhost:3000/api/teddies/" + "order", options);
+    sendTicket
+      .then((response) => {
+        response.json()
+          .then((text) => {
+            console.log(text.orderId);
+            window.location = `./confirmation.html?id=${text.orderId}&name=${firstName}&prix=${total}`
+          });
+      });
+    localStorage.clear()
+  })
 }
+ticket();
+
 //envoie des donnees
