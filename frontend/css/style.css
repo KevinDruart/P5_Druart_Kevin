@@ -291,11 +291,16 @@ h4.adress {
     PADDING-TOP: 5%;
 }
 
-button.confirm-panier {
+button#confirmer-panier {
     font-size: 1em;
     MARGIN-TOP: 5%;
     MARGIN-BOTTOM: 5%;
     float: right;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
 }
 
 /*MEDIA QUERIES cart*/
