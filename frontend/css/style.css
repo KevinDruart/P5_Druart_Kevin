@@ -1,4 +1,9 @@
+/*Les erreurs*/
+.error-msg {
+    text-align: center;
+}
 /*GENERALS*/
+
 .fs-4 {
     PADDING-RIGHT: 30%;
 }

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmation de commande</title>
+
+    <!-- CSS -->
+    <link href="./css/style.css" rel="stylesheet">
+    <!--bootstrap css-->
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <!--HEADER-->
+    <div class="container header" id="myHeader">
+        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+            <a href="index.html"
+                class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+                <svg class="bi me-2" width="40" height="32">
+                    <use xlink:href="#bootstrap" />
+                </svg>
+                <span class="fs-4">Orinoco</span>
+            </a>
+
+            <ul class="nav nav-pills">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link active">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="panier.html" class="nav-link">Paniers <span id="panierLength"
+                            class="badge bg-primary rounded-pill">0</span></a>
+                </li>
+            </ul>
+        </header>
+    </div>
+    <!--FIN DU HEADER-->
+    <!--Corps de la page-->
+    <main>
+        <section id="confirm">
+            <!--Ici la view sera injecter-->
+        </section>
+    </main>
+    <!--Fin du corps de la page-->
+    <!--FOOTER-->
+    <footer>
+        <div class="credits">
+            <span>Orinoco. Copyright © 2021.</span>
+        </div>
+    </footer>
+    <!--FOOTER END-->
+
+    <!--JAVASCRIPT-->
+    <script src="./js/confirm.js"></script>
+    <script src="./js/view.js"></script>
+    <script src="./js/utils.js"></script>
+    <script src="./js/request.js"></script>
+</body>
+
+</html>
