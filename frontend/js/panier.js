@@ -83,7 +83,7 @@ const ticket = () => {
       });
       console.log(commandClient);
     }
-    //on defini des options et methode d'envoi, le serveur attend du JSON
+    //Envoi des données récupérées
     const options = {
       headers: {
         'Content-Type': 'application/json',
@@ -92,17 +92,22 @@ const ticket = () => {
       body: JSON.stringify(commandClient),
     }
 
-    const sendTicket = getRequest("http://localhost:3000/api/teddies/" + "order", options);
-    sendTicket
-      .then((response) => {
+    const sendTicket = fetch("http://localhost:3000/api/teddies/order", options)
+      .then(function (response) {
+        console.log(response);
         response.json()
-          .then((text) => {
+          .then(function (text) {
             console.log(text.orderId);
-            window.location = `./confirmation.html?id=${text.orderId}&name=${firstName}&prix=${total}`
+            //redirection page de confirmation avec id de commande, nom et le total
+            window.location = `./confirm.html?id=${text.order}&name=${commandClient.contact.firstName}&prix=${total}`
           });
       });
+    //vidage du localstorage
     localStorage.clear()
-  })
+
+
+  });//fin addevent
+
 }
 ticket();
 
