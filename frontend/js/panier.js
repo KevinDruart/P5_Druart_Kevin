@@ -71,40 +71,38 @@ const ticket = () => {
   document.getElementById("form").addEventListener("submit", (e) => {
     //annule le role par defaut(changement de page)
     e.preventDefault();
-    //Avant d'envoyer un formulaire, vérification que le panier n'est pas vide.
-    if (monPanier.length == 0) {
-      alert("Attention, votre panier est vide.");
+    formValidation();
+    console.log(formValidation);
+
+/*
+    //Récupération des champs du formulaire
+    //le nom
+    let name = document.getElementById('lastName').value;
+    //le prénom
+    let firstName = document.getElementById('firstName').value;
+    //l'adresse
+    let address = document.getElementById('address').value;
+    //la ville
+    let city = document.getElementById('city').value;
+    //l'adresse email
+    let email = document.getElementById('email').value;
+
+    //Création de l'objet formulaireObjet
+    commandClient.contact = {
+      firstName: firstName,
+      lastName: name,
+      address: address,
+      city: city,
+      email: email,
     }
-    else {
+    console.log(commandClient.contact);
+    //ajout des produit panier dans commandClient
+    monPanier.forEach(produits => {
+      commandClient.product.push(produits._id)
 
-      //Récupération des champs du formulaire
-      //le nom
-      let name = document.getElementById('lastName').value;
-      //le prénom
-      let firstName = document.getElementById('firstName').value;
-      //l'adresse
-      let address = document.getElementById('address').value;
-      //la ville
-      let city = document.getElementById('ville').value;
-      //l'adresse email
-      let email = document.getElementById('email').value;
+    });
+    console.log(commandClient);
 
-      //Création de l'objet formulaireObjet
-      commandClient.contact = {
-        firstName: firstName,
-        lastName: name,
-        address: address,
-        city: city,
-        email: email,
-      }
-      console.log(commandClient.contact);
-      //ajout des produit panier dans commandClient
-      monPanier.forEach(produits => {
-        commandClient.product.push(produits._id)
-
-      });
-      console.log(commandClient);
-    }
     //Envoi des données récupérées
     const options = {
       headers: {
@@ -125,14 +123,14 @@ const ticket = () => {
           });
       });
     //vidage du localstorage
-    localStorage.clear()
+    localStorage.clear()*/
 
 
   });//fin addevent
 
 }
 if (monPanier !== null) {
-    ticket();
+  ticket();
 }
 
 
