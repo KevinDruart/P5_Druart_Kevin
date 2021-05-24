@@ -7,9 +7,10 @@ const selectionProduit = () => {
   const productId = urlParams.get('id');
   console.log('id produit est le ' + productId);
   const teddy = getRequest("http://localhost:3000/api/teddies/" + productId);
+ 
   teddy
-    .then((data) => {
-      cardProduct(data)
+    .then((data) => { 
+      cardProduct(data);
     })
     .catch((error) => {
       console.log('pas le bon produit');
@@ -34,6 +35,7 @@ const selectionProduit = () => {
 
 }
 selectionProduit();
+
 
 /*------------------------Ajouter un article au panier---------------------------*/
 

@@ -1,19 +1,20 @@
-/*---------------------erreur de connexion API affichage----------------------- */
-const errorAPI = () => {
-    //on selectionne la balise "cache-error"
-    let cacheError = document.getElementById("cache-error");
-    console.log(cacheError);
-
-    //on change le titre pour prevenir d'une erreur 
-    cacheError.textContent = "Une erreur est survenu et rend notre site indisponible, nos equipes travaille sur le probleme. Veuillez nous en excuser, nous vous recommandons de revenir plus tard";
-
-    //on regle le design
-    cacheError.style.fontSize = '1em';
-}
-
 /*-------------Création de la mise en page de la page panier--------------------*/
 
 const affichagePanier = (article, index) => {
+        //selection des message erreur du formulaire
+        let msgErrorName = document.getElementById('error-name');
+        let msgErrorFirstname = document.getElementById('error-firstname');
+        let msgErrorAddress = document.getElementById('error-address');
+        let msgErrorCity = document.getElementById('error-city');
+        let msgErrorEmail = document.getElementById('error-email');
+    
+        //on cache les message eurreur formulaire par défaut
+        msgErrorName.style.display ='none';
+        msgErrorFirstname.style.display ='none';
+        msgErrorAddress.style.display ='none';
+        msgErrorCity.style.display ='none';
+        msgErrorEmail.style.display ='none';
+
 
     //on selectionne la balise "cart-info" pour y injecter nos elements
     let aside = document.getElementById("cart-info");
@@ -80,9 +81,13 @@ const affichagePanier = (article, index) => {
         articleAction.setAttribute("alt", "Retirer l'article du panier.");
         articleAction.setAttribute("class", "fas fa-trash-alt"); //Logo poubelle pour supprimer l'article du panier.
 
+        //Modification visuel du style
+        articleAction.style.cursor = "pointer";
+
         /*Suppression de l'article en cliquant sur la poubelle*/
         articleAction.addEventListener("click", function (event) {
             suppressionArticle(event.target.id);
+            console.log(monPanier);
         });
 
         //Hiérarchisation des élements crées
@@ -118,16 +123,14 @@ const affichagePanier = (article, index) => {
     footerLigne.appendChild(space);
     footerLigne.appendChild(deletePanierBox);
     deletePanierBox.appendChild(deletePanier);
-    /*Suppression de l'article en cliquant sur la poubelle*/
+
+    //Vidage du panier 
     deletePanier.addEventListener("click", (e) => {
         //annule l'action par defaut
         e.preventDefault();
-        //vide le localStorage
-        localStorage.clear();
+        videPanier();
         //confirmation que le panier a bien etait vider
         alert('le panier a bien etait vider!')
-        //rafraichissement de la page
-        location.reload();
     });
 
     monPanier.forEach(priceArticle => {
@@ -236,12 +239,35 @@ const createProduct = (teddy) => {
     produitPrix.textContent = euro.format(teddy.price / 100);
     produitLien.textContent = "Voir plus";
 }
+/*----------------------Gestion affichage si erreur du serveur---------------------*/
+const errorServer = () => {
+    //suppression du titre "nos produits"
+    document.getElementById('title-index').remove();
 
+    //création des elements qui afficheront un message en cas d'erreur
+    let error = document.getElementById('card');
+    let imgError = document.createElement('img');
+    let errorMsg = document.createElement('h4');
+
+    //Hierarchisation des elements créer
+    error.appendChild(imgError);
+    error.appendChild(errorMsg);
+
+    //Attributs supplémentaires
+    imgError.setAttribute("src", "./images/oups.jpg");
+    error.setAttribute("class", "error-msg");
+
+    // attribution des donnees
+    errorMsg.textContent = 'Une erreur est survenue.. Nos equipes travail a sa resolution, revenez plus tard!';
+    console.log('For dev: erreur serveur');
+}
 /*------------ajout du nombre d'article dans le panier sur la nav----------*/
+if (monPanier !== null) {
+    //on selectionne la balise 'panier-length' pour y injecter nos elements
+    let panierLength = document.getElementById('panierLength');
 
-//on selectionne la balise 'panier-length' pour y injecter nos elements
-let panierLength = document.getElementById('panierLength');
+    //Attribution des données aux élements créees
+    panierLength.textContent = (monPanier.length);
+}
 
-//Attribution des données aux élements créees
-panierLength.textContent = (monPanier.length);
 

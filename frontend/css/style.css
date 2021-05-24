@@ -1,6 +1,6 @@
-/*Les erreurs*/
-.error-msg {
-    text-align: center;
+/*Les erreurs formulaire*/
+#error-name, #error-firstname, #error-address, #error-city, #error-email {
+    color: red;
 }
 /*GENERALS*/
 
@@ -307,6 +307,54 @@ form {
     display: flex;
     flex-direction: column;
 }
+
+label {
+    FONT-SIZE: 1.5EM;
+    COLOR: #008CBA;
+}
+
+.input-container {
+    display: -ms-flexbox; /* IE10 */
+    display: flex;
+    width: 100%;
+    margin-bottom: 15px;
+    align-items: center;
+  }
+  
+  .icon {
+    padding: 10px;
+    background: #008CBA;
+    color: white;
+    min-width: 50px;
+    text-align: center;
+  }
+  
+  .input-field {
+    width: 100%;
+    padding: 0.8%;
+    outline: none;
+    border: 2px dashed #008CBA;
+  }
+  
+  .input-field:focus {
+    border: 2px solid #008CBA;
+  }
+
+  /* Set a style for the submit button */
+.btn-submit {
+    background-color: #008CBA;
+    color: white;
+    padding: 15px 20px;
+    margin-bottom: 2%;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+  }
+  
+  .btn-submit:hover {
+    opacity: 3;
+  }
 
 /*MEDIA QUERIES cart*/
 

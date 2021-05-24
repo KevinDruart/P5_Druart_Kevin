@@ -6,13 +6,14 @@ const listeTeddies = () => {
         .then((produits) => {
             produits.forEach((produit) => {
                 createProduct(produit)
-                console.log(produit._id)
+                console.log(produit._id);
             })
         })
-        .catch(() => {
+      /*  .catch(() => {
             //appel a la fonction "errorServer"
-            errorServer();
-        })
+            //errorServer();
+        })*/
 }
 listeTeddies();
+
 

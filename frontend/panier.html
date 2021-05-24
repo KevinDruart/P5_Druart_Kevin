@@ -67,27 +67,63 @@
         <!--formulaire-->
         <form id="form" method="POST">
           <!--Nom-->
-          <label for="lastName">Nom</label>
-          <input type="text" id="lastName" name="lastName" placeholder="Nom" required>
-          <div id="errorName">Votre nom est incorrecte.</div>
+          <div class="name-group">
+            <label for="lastName">Nom</label>
+            <div class="input-container">
+              <i class="far fa-user icon icon-name"></i>
+              <input type="text" id="lastName" name="lastName" placeholder="Nom" class="input-field">
+            </div>
+            <span id="error-name">
+              Votre nom n'est pas correcte.
+            </span>
+          </div>
           <!--Prenom-->
-          <label for="firstName">Prénom</label>
-          <input type="text" id="firstName" name="firstName" placeholder="Prénom" required>
-          <div id="errorFirstName">Votre prénom est incorrecte.</div>
+          <div class="firstname-group">
+            <label for="firstName">Prénom</label>
+            <div class="input-container">
+              <i class="far fa-user icon icon-firstname"></i>
+              <input type="text" id="firstName" name="firstName" class="input-field" placeholder="Prénom">
+            </div>
+            <span id="error-firstname">
+              Votre prénom n'est pas correcte.
+            </span>
+          </div>
           <!--Adresse-->
-          <label for="address">Adresse</label>
-          <input type="text" id="address" name="address" placeholder="123 rue origino" required>
+          <div class="address-group">
+            <label for="address">Adresse</label>
+            <div class="input-container">
+              <i class="fas fa-home icon icon-address"></i>
+              <input type="text" id="address" name="address" class="input-field" placeholder="123 rue origino">
+            </div>
+            <span id="error-address">
+              Votre adresse n'est pas correcte.
+            </span>
+          </div>
           <!--Ville-->
-          <label for="Ville" class="labelform">Ville :</label>
-          <input type="text" id="ville" name="ville" placeholder="Paris" required>
-          <div id="errorCity">La ville saisi est incorrecte.</div>
+          <div class="city-group">
+            <label for="Ville" class="labelform">Ville :</label>
+            <div class="input-container">
+              <i class="fas fa-home icon icon-city"></i>
+              <input type="text" id="city" name="ville" class="input-field" placeholder="Paris">
+            </div>
+            <span id="error-city">
+              Votre ville n'est pas correcte.
+            </span>
+          </div>
           <!--Email-->
-          <label for="email">Adresse email</label>
-          <input type="email" id="email" name="email" placeholder="exemple@origino.fr" required>
-          <div id="errorEmail">Veuillez entrer une adresse email valide.</div>
+          <div class="email-group">
+            <label for="email">Adresse email</label>
+            <div class="input-container">
+              <i class="fas fa-at icon icon-email"></i>
+              <input type="email" id="email" name="email" class="input-field" placeholder="exemple@origino.fr">
+            </div>
+            <span id="error-email">
+              Votre email n'est pas correcte.
+            </span>
+          </div>
 
           <!--Bouton de validation-->
-          <input type="submit" id="confirmer-panier" value="Valider ma commande"></input>
+          <input type="submit" class="btn-submit" id="confirmer-panier" value="Valider ma commande"></input>
         </form>
         <!--fin du formulaire livraison-->
       </section>
