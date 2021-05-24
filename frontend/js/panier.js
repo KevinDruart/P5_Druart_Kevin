@@ -7,31 +7,55 @@ const cartCheckout = () => {
   if (monPanier !== null) {
     document.getElementById('panierVide').remove();
     affichagePanier();
+
+    //si le panier n'est pas vide alors on recupere nos input formulaires
+    //nom
+    let inputName = document.getElementById('lastName');
+    //prenom
+    let inputFirstName = document.getElementById('firstName');
+    //adresse
+    let inputAddress = document.getElementById('address');
+    //ville
+    let inputCity = document.getElementById('city');
+    //email
+    let inputEmail = document.getElementById('email');
+
+    //on ajoute un evenment pour la validation des données entrer par l'utilisateur
+    //evenement nom
+    inputName.addEventListener('input', (event) => {
+      //on appel la fonction de validation 
+      validateName(event.currentTarget);
+    })
+    //evenement prenom
+    inputFirstName.addEventListener('input', (event) => {
+      //on appel la fonction de validation
+      validateFirstName(event.currentTarget);
+    })
+    //evenement adresse
+    inputAddress.addEventListener('input', (event) => {
+      //on appel la fonction de validation
+      validateAddress(event.currentTarget);
+    })
+    //evenement ville
+    inputCity.addEventListener('input', (event) => {
+      //on appel la fonction de validation
+      validateCity(event.currentTarget);
+    })
+    //evenement email
+    inputEmail.addEventListener('input', (event) => {
+      //on appel la fonction de validation
+      validateEmail(event.currentTarget);
+    })
   }
   else {
     //si aucun produit dans mon panier, on cache le formulaire
     document.getElementById('form-checkout').remove();
   }
+
 }
+
 cartCheckout();
 
-/*------------------ Vérification des données du formulaire via le navigateur ------------------------- */
-const verifNavigator = () => {
-  // recupere tout ce qui est dans 'needs-validation'
-  const forms = document.querySelectorAll('.needs-validation')
-
-  // boucle de verification des données formulaire et event de soumission
-  Array.prototype.slice.call(forms)
-    .forEach(function (form) {
-      form.addEventListener('submit', function (event) {
-        if (!form.checkValidity()) {
-          event.preventDefault()
-          event.stopPropagation()
-        }
-        form.classList.add('was-validated')
-      }, false)
-    });
-}
 /*---------------------------------FORMULAIRE-------------------------------------*/
 
 //creation de mon objet commande Client avec les donnees du formulaire et de mon panier
@@ -47,8 +71,6 @@ const ticket = () => {
   document.getElementById("form").addEventListener("submit", (e) => {
     //annule le role par defaut(changement de page)
     e.preventDefault();
-    //procede a une validation via les navigateurs 
-    verifNavigator();
     //Avant d'envoyer un formulaire, vérification que le panier n'est pas vide.
     if (monPanier.length == 0) {
       alert("Attention, votre panier est vide.");
@@ -97,9 +119,9 @@ const ticket = () => {
         console.log(response);
         response.json()
           .then(function (text) {
-            console.log(text.orderId);
+            console.log(text.order_id);
             //redirection page de confirmation avec id de commande, nom et le total
-            window.location = `./confirm.html?id=${text.order}&name=${commandClient.contact.firstName}&prix=${total}`
+            // window.location = `./confirm.html?id=${text.order_id}&name=${commandClient.contact.firstName}&prix=${total}`
           });
       });
     //vidage du localstorage
@@ -109,6 +131,10 @@ const ticket = () => {
   });//fin addevent
 
 }
-ticket();
+if (monPanier !== null) {
+    ticket();
+}
 
-//envoie des donnees
+
+
+
