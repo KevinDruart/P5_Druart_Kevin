@@ -48,7 +48,7 @@ const validateName = (inputName) => {
   let inputNameBorder = document.getElementById('lastName');
   let msgError = document.getElementById('error-name');
   let iconError = document.querySelector('.icon-name');
-  
+
   const valueName = inputName.value.trim();
   if (valueName.length !== 0) {
     console.log('ok quelque chose est entrer', valueName);
@@ -124,7 +124,7 @@ const validateAddress = (inputAddress) => {
     if (valueAddress.match(lettersNumbers)) {
       console.log('ok adress regex');
       msgErrorAddress.style.display = 'none';
-      iconErrorAddress.style.backgroundColor = '#32CD32';    
+      iconErrorAddress.style.backgroundColor = '#32CD32';
       inputAddressBorder.style.border = "2px solid #32CD32"
     }
     else {
@@ -179,7 +179,7 @@ const validateCity = (inputCity) => {
 //Validation email
 const validateEmail = (inputEmail) => {
   let inputEmailBorder = document.getElementById('email');
-  let msgErrorEmail= document.getElementById('error-email');
+  let msgErrorEmail = document.getElementById('error-email');
   let iconErrorEmail = document.querySelector('.icon-email');
   const valueEmail = inputEmail.value.trim();
   if (valueEmail.length !== 0) {
@@ -207,4 +207,86 @@ const validateEmail = (inputEmail) => {
     inputEmailBorder.style.border = "2px double red"
   }
 
+}
+
+/*------------------------Validation a l'envoi--------------------------*/
+const formValidation = () => {  
+  let uname = document.form.lastName;
+  let firstname = document.form.firstName;
+  let uadd = document.form.address;
+  let ucity = document.form.city;
+  let uemail = document.form.email;
+
+  if (lastName_validation(uname)) {
+    if (firstName_validation(firstname, 3, 12)) {
+      if (address_validation(uadd)) {
+        if (city_validation(ucity)) {
+          if (email_validation(uemail)) {
+
+          }
+        }
+      }
+    }
+  }
+  return false;
+
+}
+
+const lastName_validation = (uname) => {
+  let regex = /^[A-Za-z]+$/;
+  if (uname.value.match(regex)) {
+    return true;
+  }
+  else {
+    alert('Votre nom ne doit contenir que des caractere alphabétique');
+    uname.focus();
+    return false;
+  }
+}
+const firstName_validation = (firstname) => {
+  let regex = /^[A-Za-z]+$/;
+  if (firstname.value.match(regex)) {
+    return true;
+  }
+  else {
+    alert('Votre prenom ne doit contenir que des caractere alphabétique');
+    firstname.focus();
+    return false;
+  }
+}
+
+
+const address_validation = (uadd) => {
+  let regex = /^\d+\s[A-z]+\s[A-z]+/;
+  if (uadd.value.match(regex)) {
+    return true;
+  }
+  else {
+    alert('Votre adresse ne doit contenir que des chiffres et des lettres');
+    uadd.focus();
+    return false;
+  }
+}
+const city_validation = (ucity) => {
+  let regex = /^[A-Za-z]+$/;
+  if (ucity.value.match(regex)) {
+    return true;
+  }
+  else {
+    alert('Votre ville ne doit contenir que des caractere alphabétique');
+    ucity.focus();
+    return false;
+  }
+}
+
+const email_validation = (uemail) => {
+  let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  if (uemail.value.match(mailformat)) {
+    return true;
+  }
+  else {
+    alert("Vous avez entrer une adresse mail invalide!");
+    uemail.focus();
+    return false;
+  }
 }
