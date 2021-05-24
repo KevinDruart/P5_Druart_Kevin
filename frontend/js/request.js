@@ -2,8 +2,14 @@
 /*--------------------Initialisation de la requete -----------------------*/
 const getRequest = async (url) => {
     const response = await fetch(url);
-     return await response.json();  
+    console.log(response.status);
+ 
+        return await response.json();
+  
+ 
 }
+
+
 
 /*----------------------Gestion du localStorage-------------------------- */
 
