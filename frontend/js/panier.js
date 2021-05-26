@@ -7,6 +7,7 @@ const cartCheckout = () => {
   if (monPanier !== null) {
     document.getElementById('panierVide').remove();
     affichagePanier();
+    validateFormCart();
 
     //si le panier n'est pas vide alors on recupere nos input formulaires
     //nom
@@ -57,7 +58,7 @@ const cartCheckout = () => {
 cartCheckout();
 
 /*---------------------------------FORMULAIRE-------------------------------------*/
-/*
+
 //creation de mon objet commande Client avec les donnees du formulaire et de mon panier
 const ticket = () => {
   ////Création de l'objet à envoyer, regroupant le formulaire et les articles
@@ -67,11 +68,7 @@ const ticket = () => {
     //donnees du panier seront stocker ici
     product: [],
   }
-  //recupération du input submit afin de recuperer les données
-  document.getElementById("form").addEventListener("submit", (e) => {
-    //annule le role par defaut(changement de page)
-    e.preventDefault();
-    formValidation();
+
 
       //Récupération des champs du formulaire
       //le nom
@@ -117,20 +114,14 @@ const ticket = () => {
             .then(function (text) {
               console.log(text.order_id);
               //redirection page de confirmation avec id de commande, nom et le total
-              // window.location = `./confirm.html?id=${text.order_id}&name=${commandClient.contact.firstName}&prix=${total}`
+              window.location = `./confirm.html?id=${text.order_id}&name=${commandClient.contact.firstName}&prix=${total}`
             });
         });
       //vidage du localstorage
-      //localStorage.clear();
-
-  });//fin addevent
-
+      localStorage.clear();
 }
 
-if (monPanier !== null) {
-  ticket();
-}
-*/
+
 
 
 
