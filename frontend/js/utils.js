@@ -210,7 +210,8 @@ const validateEmail = (inputEmail) => {
 }
 
 /*------------------------Validation a l'envoi--------------------------*/
-const formValidation = () => {  
+const formValidation = () => {
+  let message = document.getElementById('message');
   let uname = document.form.lastName;
   let firstname = document.form.firstName;
   let uadd = document.form.address;
@@ -228,65 +229,87 @@ const formValidation = () => {
       }
     }
   }
-  return false;
-
+  else {
+    return false;
+  }
 }
 
+//Nom
 const lastName_validation = (uname) => {
   let regex = /^[A-Za-z]+$/;
   if (uname.value.match(regex)) {
     return true;
   }
   else {
-    alert('Votre nom ne doit contenir que des caractere alphabétique');
+    message.textContent = 'Votre nom ne doit contenir que des caracteres alphabétique';
+    message.style.color = 'red';
     uname.focus();
     return false;
   }
 }
+
+//Prènom
 const firstName_validation = (firstname) => {
   let regex = /^[A-Za-z]+$/;
   if (firstname.value.match(regex)) {
     return true;
   }
   else {
-    alert('Votre prenom ne doit contenir que des caractere alphabétique');
+    message.textContent = 'Votre nom ne doit contenir que des caracteres alphabétique';
+    message.style.color = 'red';
     firstname.focus();
     return false;
   }
 }
 
-
+//Adresse
 const address_validation = (uadd) => {
   let regex = /^\d+\s[A-z]+\s[A-z]+/;
   if (uadd.value.match(regex)) {
     return true;
   }
   else {
-    alert('Votre adresse ne doit contenir que des chiffres et des lettres');
+    message.textContent = 'Votre adresse ne doit contenir que des chiffres et des lettres';
+    message.style.color = 'red';
     uadd.focus();
     return false;
   }
 }
+
+//Ville
 const city_validation = (ucity) => {
   let regex = /^[A-Za-z]+$/;
   if (ucity.value.match(regex)) {
     return true;
   }
   else {
-    alert('Votre ville ne doit contenir que des caractere alphabétique');
+    message.textContent = 'Votre ville ne doit contenir que des caractere alphabétique';
+    message.style.color = 'red';
     ucity.focus();
     return false;
   }
 }
 
+//Email
 const email_validation = (uemail) => {
   let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   if (uemail.value.match(mailformat)) {
     return true;
   }
   else {
-    alert("Vous avez entrer une adresse mail invalide!");
+    message.textContent = 'Vous avez entrer une adresse mail invalide!';
+    message.style.color = 'red';
     uemail.focus();
     return false;
   }
 }
+
+/*const envoyer = () => {
+  if (uname == true && firstname == true && uadd == true && ucity == true && uemail == true) {
+    document.getElementById('message').innerText = "Commande validé";
+    document.getElementById('confirmer-panier').submit();
+  }
+  else {
+    document.getElementById('message').innerText = "Le formulaire n'est pas complet";
+  }
+}*/

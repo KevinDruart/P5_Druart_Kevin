@@ -57,7 +57,7 @@ const cartCheckout = () => {
 cartCheckout();
 
 /*---------------------------------FORMULAIRE-------------------------------------*/
-
+/*
 //creation de mon objet commande Client avec les donnees du formulaire et de mon panier
 const ticket = () => {
   ////Création de l'objet à envoyer, regroupant le formulaire et les articles
@@ -72,67 +72,65 @@ const ticket = () => {
     //annule le role par defaut(changement de page)
     e.preventDefault();
     formValidation();
-    console.log(formValidation);
 
-/*
-    //Récupération des champs du formulaire
-    //le nom
-    let name = document.getElementById('lastName').value;
-    //le prénom
-    let firstName = document.getElementById('firstName').value;
-    //l'adresse
-    let address = document.getElementById('address').value;
-    //la ville
-    let city = document.getElementById('city').value;
-    //l'adresse email
-    let email = document.getElementById('email').value;
+      //Récupération des champs du formulaire
+      //le nom
+      let name = document.getElementById('lastName').value;
+      //le prénom
+      let firstName = document.getElementById('firstName').value;
+      //l'adresse
+      let address = document.getElementById('address').value;
+      //la ville
+      let city = document.getElementById('city').value;
+      //l'adresse email
+      let email = document.getElementById('email').value;
 
-    //Création de l'objet formulaireObjet
-    commandClient.contact = {
-      firstName: firstName,
-      lastName: name,
-      address: address,
-      city: city,
-      email: email,
-    }
-    console.log(commandClient.contact);
-    //ajout des produit panier dans commandClient
-    monPanier.forEach(produits => {
-      commandClient.product.push(produits._id)
+      //Création de l'objet formulaireObjet
+      commandClient.contact = {
+        firstName: firstName,
+        lastName: name,
+        address: address,
+        city: city,
+        email: email,
+      }
+      console.log(commandClient.contact);
+      //ajout des produit panier dans commandClient
+      monPanier.forEach(produits => {
+        commandClient.product.push(produits._id)
 
-    });
-    console.log(commandClient);
-
-    //Envoi des données récupérées
-    const options = {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      method: "POST",
-      body: JSON.stringify(commandClient),
-    }
-
-    const sendTicket = fetch("http://localhost:3000/api/teddies/order", options)
-      .then(function (response) {
-        console.log(response);
-        response.json()
-          .then(function (text) {
-            console.log(text.order_id);
-            //redirection page de confirmation avec id de commande, nom et le total
-            // window.location = `./confirm.html?id=${text.order_id}&name=${commandClient.contact.firstName}&prix=${total}`
-          });
       });
-    //vidage du localstorage
-    localStorage.clear()*/
+      console.log(commandClient);
 
+      //Envoi des données récupérées
+      const options = {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        method: "POST",
+        body: JSON.stringify(commandClient),
+      }
+
+      const sendTicket = fetch("http://localhost:3000/api/teddies/order", options)
+        .then(function (response) {
+          console.log(response);
+          response.json()
+            .then(function (text) {
+              console.log(text.order_id);
+              //redirection page de confirmation avec id de commande, nom et le total
+              // window.location = `./confirm.html?id=${text.order_id}&name=${commandClient.contact.firstName}&prix=${total}`
+            });
+        });
+      //vidage du localstorage
+      //localStorage.clear();
 
   });//fin addevent
 
 }
+
 if (monPanier !== null) {
   ticket();
 }
-
+*/
 
 
 
