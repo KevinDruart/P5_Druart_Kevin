@@ -50,63 +50,44 @@ const validateName = (inputName) => {
   let iconError = document.querySelector('.icon-name');
 
   const valueName = inputName.value.trim();
-  if (valueName.length !== 0) {
-    console.log('ok quelque chose est entrer', valueName);
+  //regex letters
+  const letters = /^[A-Za-z]+$/;
+  if (valueName.length !== 0 && valueName.match(letters)) {
+    console.log('ok quelque chose est entrer et ok regex:', valueName);
     msgError.style.display = 'none';
-    iconError.style.backgroundColor = '#008CBA';
-    const letters = /^[A-Za-z]+$/;
-    if (valueName.match(letters)) {
-      console.log('ok nom ce sont que des lettres');
-      msgError.style.display = 'none';
-      iconError.style.backgroundColor = '#32CD32';
-      inputNameBorder.style.border = "2px solid #32CD32"
-    }
-    else {
-      console.log('nom c est pas bon il y a des chiffres');
-      msgError.style.display = 'contents';
-      iconError.style.backgroundColor = 'red';
-      inputNameBorder.style.border = "2px double red"
-    }
+    iconError.style.backgroundColor = '#32CD32';
+    inputNameBorder.style.border = "2px solid #32CD32"
   }
   else {
-    console.log('nom c est pas bon vide');
+    console.log('nom c est pas bon, vide ou pas ok regex');
     msgError.style.display = 'contents';
     iconError.style.backgroundColor = 'red';
     inputNameBorder.style.border = "2px double red"
   }
-
 }
+
+
 //validation prenom
 const validateFirstName = (inputFirstName) => {
   let inputFirstnameBorder = document.getElementById('firstName');
   let msgErrorFirstname = document.getElementById('error-firstname');
   let iconErrorFirstname = document.querySelector('.icon-firstname');
   const valueFirstName = inputFirstName.value.trim();
-  if (valueFirstName.length !== 0) {
-    console.log('ok prenom quelque chose est entrer', valueFirstName);
+  // creation regex letters
+  const letters = /^[A-Za-z]+$/;
+
+  if (valueFirstName.length !== 0 && valueFirstName.match(letters)) {
+    console.log('ok prenom quelque chose est entrer et ok regex:', valueFirstName);
     msgErrorFirstname.style.display = 'none';
-    iconErrorFirstname.style.backgroundColor = '#008CBA';
-    const letters = /^[A-Za-z]+$/;
-    if (valueFirstName.match(letters)) {
-      console.log('ok prenom que des lettres');
-      msgErrorFirstname.style.display = 'none';
-      iconErrorFirstname.style.backgroundColor = '#32CD32';
-      inputFirstnameBorder.style.border = "2px solid #32CD32"
-    }
-    else {
-      console.log('prenom c est pas bon il y a des chiffres');
-      msgErrorFirstname.style.display = 'contents';
-      iconErrorFirstname.style.backgroundColor = 'red';
-      inputFirstnameBorder.style.border = "2px double red"
-    }
+    iconErrorFirstname.style.backgroundColor = '#32CD32';
+    inputFirstnameBorder.style.border = "2px solid #32CD32"
   }
   else {
-    console.log('prenom c est pas bon vide');
+    console.log('prenom c est pas bon, vide ou il y a des chiffres');
     msgErrorFirstname.style.display = 'contents';
     iconErrorFirstname.style.backgroundColor = 'red';
     inputFirstnameBorder.style.border = "2px double red"
   }
-
 }
 
 //validation address
@@ -115,32 +96,21 @@ const validateAddress = (inputAddress) => {
   let msgErrorAddress = document.getElementById('error-address');
   let iconErrorAddress = document.querySelector('.icon-address');
   const valueAddress = inputAddress.value.trim();
-  if (valueAddress.length !== 0) {
-    console.log('ok adresse quelque chose est entrer', valueAddress);
-    msgErrorAddress.style.display = 'none';
-    iconErrorAddress.style.backgroundColor = '#008CBA';
+  //creation de la regex pour adresse
+  const lettersNumbers = /^\d+\s[A-z]+\s[A-z]+/;
 
-    const lettersNumbers = /^\d+\s[A-z]+\s[A-z]+/;
-    if (valueAddress.match(lettersNumbers)) {
-      console.log('ok adress regex');
-      msgErrorAddress.style.display = 'none';
-      iconErrorAddress.style.backgroundColor = '#32CD32';
-      inputAddressBorder.style.border = "2px solid #32CD32"
-    }
-    else {
-      console.log('adresse c est pas bon regex');
-      msgErrorAddress.style.display = 'contents';
-      iconErrorAddress.style.backgroundColor = 'red';
-      inputAddressBorder.style.border = "2px double red"
-    }
+  if (valueAddress.length !== 0 && valueAddress.match(lettersNumbers)) {
+    console.log('ok adresse quelque chose est entrer et ok regex:', valueAddress);
+    msgErrorAddress.style.display = 'none';
+    iconErrorAddress.style.backgroundColor = '#32CD32';
+    inputAddressBorder.style.border = "2px solid #32CD32"
   }
   else {
-    console.log('adresse c est pas bon vide');
+    console.log('adresse c est pas bon, vide ou pas ok regex');
     msgErrorAddress.style.display = 'contents';
     iconErrorAddress.style.backgroundColor = 'red';
     inputAddressBorder.style.border = "2px double red"
   }
-
 }
 
 //validation city
@@ -149,31 +119,20 @@ const validateCity = (inputCity) => {
   let msgErrorCity = document.getElementById('error-city');
   let iconErrorCity = document.querySelector('.icon-city');
   const valueCity = inputCity.value.trim();
-  if (valueCity.length !== 0) {
-    console.log('ok ville quelque chose est entrer', valueCity);
+  //création de la regex letter 
+  const letters = /^[A-Za-z]+$/;
+  if (valueCity.length !== 0 && valueCity.match(letters)) {
+    console.log('ok ville quelque chose est entrer et ne contient pas de chiffre : ', valueCity);
     msgErrorCity.style.display = 'none';
-    iconErrorCity.style.backgroundColor = '#008CBA';
-    const letters = /^[A-Za-z]+$/;
-    if (valueCity.match(letters)) {
-      console.log('ok ville que des lettres');
-      msgErrorCity.style.display = 'none';
-      iconErrorCity.style.backgroundColor = '#32CD32';
-      inputCityBorder.style.border = "2px solid #32CD32"
-    }
-    else {
-      console.log('ville c est pas bon il y a des chiffres');
-      msgErrorCity.style.display = 'contents';
-      iconErrorCity.style.backgroundColor = 'red';
-      inputCityBorder.style.border = "2px double red";
-    }
+    iconErrorCity.style.backgroundColor = '#32CD32';
+    inputCityBorder.style.border = "2px solid #32CD32"
   }
   else {
-    console.log('ville c est pas bon vide');
+    console.log('ville c est pas bon il y a rien ou il y a des chiffres');
     msgErrorCity.style.display = 'contents';
     iconErrorCity.style.backgroundColor = 'red';
     inputCityBorder.style.border = "2px double red";
   }
-
 }
 
 //Validation email
@@ -182,35 +141,26 @@ const validateEmail = (inputEmail) => {
   let msgErrorEmail = document.getElementById('error-email');
   let iconErrorEmail = document.querySelector('.icon-email');
   const valueEmail = inputEmail.value.trim();
-  if (valueEmail.length !== 0) {
-    console.log('ok email quelque chose est entrer', valueEmail);
+  //creation de la  regex mail
+  const mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+  //la longueur est differente de 0 et si regex ok
+  if (valueEmail.length !== 0 && valueEmail.match(mailFormat)) {
+    console.log('ok email quelque chose est entrer et ok regex : ', valueEmail);
     msgErrorEmail.style.display = 'none';
-    iconErrorEmail.style.backgroundColor = '#008CBA';
-    const mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    if (valueEmail.match(mailFormat)) {
-      console.log('ok email regex');
-      msgErrorEmail.style.display = 'none';
-      iconErrorEmail.style.backgroundColor = '#32CD32';
-      inputEmailBorder.style.border = "2px solid #32CD32"
-    }
-    else {
-      console.log('email c est pas bon regex');
-      msgErrorEmail.style.display = 'contents';
-      iconErrorEmail.style.backgroundColor = 'red';
-      inputEmailBorder.style.border = "2px double red"
-    }
+    iconErrorEmail.style.backgroundColor = '#32CD32';
+    inputEmailBorder.style.border = "2px solid #32CD32"
   }
   else {
-    console.log('email c est pas bon vide');
+    console.log('email c est pas bon, vide ou pas ok regex');
     msgErrorEmail.style.display = 'contents';
     iconErrorEmail.style.backgroundColor = 'red';
     inputEmailBorder.style.border = "2px double red"
   }
-
 }
 
 /*------------------------Validation a l'envoi--------------------------*/
-const formValidation = () => {
+/*const formValidation = () => {
   let message = document.getElementById('message');
   let uname = document.form.lastName;
   let firstname = document.form.firstName;
@@ -302,7 +252,7 @@ const email_validation = (uemail) => {
     uemail.focus();
     return false;
   }
-}
+}*/
 
 /*const envoyer = () => {
   if (uname == true && firstname == true && uadd == true && ucity == true && uemail == true) {
@@ -313,3 +263,60 @@ const email_validation = (uemail) => {
     document.getElementById('message').innerText = "Le formulaire n'est pas complet";
   }
 }*/
+
+function disableSubmit(disabled) {
+  if (disabled) {
+    document
+      .getElementById("confirmer-panier")
+      .setAttribute("disabled", true);
+  } else {
+    document
+      .getElementById("confirmer-panier")
+      .removeAttribute("disabled");
+  }
+}
+
+const messageValidation = () => {
+  return document.getElementById("message");
+}
+const validateFormCart = () => {
+  let buttonValider = document.getElementById("confirmer-panier");
+
+  //REGEX
+  let regexLetter = /^[a-zA-Z]+$/;
+  let regexAdd = /^\d+\s[A-z]+\s[A-z]+/;
+  let regexMail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+  //ecouter lors du clique sur le bouton commander
+  buttonValider.addEventListener('click', (e) => {
+    e.preventDefault();
+    //nom
+    let inputName = document.getElementById('lastName');
+    //prenom
+    let inputFirstName = document.getElementById('firstName');
+    //adresse
+    let inputAddress = document.getElementById('address');
+    //ville
+    let inputCity = document.getElementById('city');
+    //email
+    let inputEmail = document.getElementById('email');
+
+    let testName = regexLetter.test(inputName.value);
+    let testFirstname = regexLetter.test(inputFirstName.value);
+    let testAddress = regexAdd.test(inputAddress.value);
+    let testCity = regexLetter.test(inputCity.value);
+    let testMail = regexMail.test(inputEmail.value);
+
+    if (testName == true && testFirstname == true && testAddress == true && testCity == true && testMail == true) {
+      messageValidation().innerText = "Commande valider";
+      messageValidation().style.color = 'green';
+      console.log("formulaire OK envoie des données");
+      ticket();
+    }
+    else {
+      messageValidation().innerText = "Commande impossible, tout les champs doivent etre rempli et valide";
+      messageValidation().style.color ='red';
+      console.log("ERREUR DANS LE FORMULAIRE" + testName + testFirstname + testAddress + testCity + testMail);
+    }
+  });
+}
