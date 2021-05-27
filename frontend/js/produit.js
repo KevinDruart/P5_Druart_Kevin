@@ -7,9 +7,8 @@ const selectionProduit = () => {
   const productId = urlParams.get('id');
   console.log('id produit est le ' + productId);
   const teddy = getRequest("http://localhost:3000/api/teddies/" + productId);
- 
   teddy
-    .then((data) => { 
+    .then((data) => {
       cardProduct(data);
     })
     .catch((error) => {
