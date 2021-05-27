@@ -6,7 +6,9 @@ const cartCheckout = () => {
   //si mon panier contient 1 ou plusieurs article(s) on supprime "votre panier est vide"
   if (monPanier !== null) {
     document.getElementById('panierVide').remove();
+    //appel de ma view
     affichagePanier();
+    //appel de ma fonction de validation a l'envoi
     validateFormCart();
 
     //si le panier n'est pas vide alors on recupere nos input formulaires
@@ -21,7 +23,7 @@ const cartCheckout = () => {
     //email
     let inputEmail = document.getElementById('email');
 
-    //on ajoute un evenment pour la validation des données entrer par l'utilisateur
+    //on ajoute des evenments pour la validation des données entrer par l'utilisateur
     //evenement nom
     inputName.addEventListener('input', (event) => {
       //on appel la fonction de validation 
@@ -52,9 +54,7 @@ const cartCheckout = () => {
     //si aucun produit dans mon panier, on cache le formulaire
     document.getElementById('form-checkout').remove();
   }
-
 }
-
 cartCheckout();
 
 /*---------------------------------FORMULAIRE-------------------------------------*/
