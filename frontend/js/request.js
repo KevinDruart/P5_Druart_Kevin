@@ -6,6 +6,12 @@ const getRequest = async (url) => {
     return await response.json();
 }
 
+const statusCode = () => {
+    let statusCodeRequest = getRequest(response.status);
+    console.log(statusCodeRequest);
+}
+statusCode();
+
 /*----------------------Gestion du localStorage-------------------------- */
 
 let monPanier = JSON.parse(localStorage.getItem("produit"));
