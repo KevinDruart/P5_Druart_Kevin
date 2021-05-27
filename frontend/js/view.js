@@ -42,7 +42,7 @@ const affichageConfirm = (ticketOrderId, ticketNameOrder, ticketPriceOrder) => {
     confirmMain.appendChild(sectionMain);
     sectionMain.appendChild(textConfirm);
     sectionMain.appendChild(ticketOrderRecap);
-    sectionMain.appendChild(tableOrder);
+    ticketOrderRecap.appendChild(tableOrder);
     //tableau recap order
     tableOrder.appendChild(headerTableOrder);
     headerTableOrder.appendChild(ligneHeader);
@@ -58,14 +58,39 @@ const affichageConfirm = (ticketOrderId, ticketNameOrder, ticketPriceOrder) => {
     //Attribution des donnees
     title.textContent = 'Commande confirmé';
     alert.textContent = 'Votre commande a bien etait validé';
-    textConfirm.textContent = ticketNameOrder + " " + "Merci pour votre confiance et votre commande.";
+    textConfirm.textContent = ticketNameOrder + ", merci pour votre confiance et votre commande.";
 
     orderIdColumn.textContent = "Numero de commande";
     dateColumn.textContent = "Date";
     totalPriceColumn.textContent = "Montant totale";
     orderId.textContent = ticketOrderId;
     orderDate.textContent = "date";
-    orderPrice.textContent = ticketPriceOrder;
+    orderPrice.textContent = euro.format(ticketPriceOrder);
+
+    //modification du style
+    title.style.paddingLeft = '1%';
+
+    annonceGlobal.style.display = 'flex';
+    annonceGlobal.style.backgroundColor = '#5cbc72';
+    annonceGlobal.style.alignItems = 'center';
+    annonceGlobal.style.width = '90%';
+    annonceGlobal.style.margin = '0% auto 0% auto';
+    imgCheck.style.color = '#fff';
+    imgCheck.style.fontSize = '2em';
+    imgCheck.style.padding = '1% 1% 1% 1%';
+    alert.style.color = '#fff';
+    alert.style.fontSize = '2em';
+
+    textConfirm.style.fontSize = '1.2em';
+    textConfirm.style.paddingLeft = '2%';
+    textConfirm.style.marginTop = '2%';
+
+    ticketOrderRecap.style.paddingLeft ='5%';
+    ticketOrderRecap.style.textAlign = 'center';
+
+    tableOrder.style.width = '50%';
+    tableOrder.style.marginBottom = '15%';
+
 
 
 }
