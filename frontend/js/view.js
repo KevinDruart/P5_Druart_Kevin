@@ -1,11 +1,14 @@
 /*-------------Création de la mise en page de la page panier--------------------*/
 
-const affichageConfirm = (ticketOrderId,ticketNameOrder,ticketPriceOrder) => {
+const affichageConfirm = (ticketOrderId, ticketNameOrder, ticketPriceOrder) => {
     let confirmMain = document.getElementById('confirm');
     let sectionHaute = create('section', 'id', 'section-haute');
     let annonce = create('div', 'class', 'annonce');
     let title = create('h1', 'id', 'title-confirm');
+    let annonceGlobal = create('div', 'id', 'annonce-g');
+    let imgCheck = create('i', 'class', 'fas fa-check');
     let alert = create('div', 'id', 'alert-confirm');
+
     //creation de la section principale
     let sectionMain = create('section', 'id', 'section-main');
     let textConfirm = create('p', 'id', 'text-confirm');
@@ -31,8 +34,10 @@ const affichageConfirm = (ticketOrderId,ticketNameOrder,ticketPriceOrder) => {
     //section haute
     confirmMain.appendChild(sectionHaute);
     sectionHaute.appendChild(annonce);
-    sectionHaute.appendChild(title);
-    sectionHaute.appendChild(alert);
+    annonce.appendChild(title);
+    annonce.appendChild(annonceGlobal);
+    annonceGlobal.appendChild(imgCheck);
+    annonceGlobal.appendChild(alert);
     //section principale
     confirmMain.appendChild(sectionMain);
     sectionMain.appendChild(textConfirm);
@@ -55,6 +60,9 @@ const affichageConfirm = (ticketOrderId,ticketNameOrder,ticketPriceOrder) => {
     alert.textContent = 'Votre commande a bien etait validé';
     textConfirm.textContent = ticketNameOrder + " " + "Merci pour votre confiance et votre commande.";
 
+    orderIdColumn.textContent = "Numero de commande";
+    dateColumn.textContent = "Date";
+    totalPriceColumn.textContent = "Montant totale";
     orderId.textContent = ticketOrderId;
     orderDate.textContent = "date";
     orderPrice.textContent = ticketPriceOrder;
