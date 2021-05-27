@@ -3,13 +3,8 @@
 const getRequest = async (url) => {
     const response = await fetch(url);
     console.log(response.status);
- 
-        return await response.json();
-  
- 
+    return await response.json();
 }
-
-
 
 /*----------------------Gestion du localStorage-------------------------- */
 

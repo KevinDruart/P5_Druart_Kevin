@@ -61,6 +61,7 @@ const validateName = (inputName) => {
   else {
     console.log('nom c est pas bon, vide ou pas ok regex');
     msgError.style.display = 'contents';
+    msgError.textContent = valueName + " " + "ne peut pas être un nom. veuillez saisir un nom valide uniquement avec des caracteres alphabétiques"
     iconError.style.backgroundColor = 'red';
     inputNameBorder.style.border = "2px double red"
   }
@@ -85,6 +86,7 @@ const validateFirstName = (inputFirstName) => {
   else {
     console.log('prenom c est pas bon, vide ou il y a des chiffres');
     msgErrorFirstname.style.display = 'contents';
+    msgErrorFirstname.textContent = valueFirstName + " " + "ne peut pas être un prénom. veuillez saisir un prénom valide uniquement avec des caracteres alphabétiques"
     iconErrorFirstname.style.backgroundColor = 'red';
     inputFirstnameBorder.style.border = "2px double red"
   }
@@ -108,6 +110,7 @@ const validateAddress = (inputAddress) => {
   else {
     console.log('adresse c est pas bon, vide ou pas ok regex');
     msgErrorAddress.style.display = 'contents';
+    msgErrorAddress.textContent = valueAddress + " " + "n'est pas une adresse valide. Format d'adresse attendu : 25 rue origino"
     iconErrorAddress.style.backgroundColor = 'red';
     inputAddressBorder.style.border = "2px double red"
   }
@@ -130,6 +133,7 @@ const validateCity = (inputCity) => {
   else {
     console.log('ville c est pas bon il y a rien ou il y a des chiffres');
     msgErrorCity.style.display = 'contents';
+    msgErrorCity.textContent = valueCity + " " + "ne peut pas etre une ville et ce champ ne peut rester vide. Veuillez ne saisir que des caractéres alphabétique."
     iconErrorCity.style.backgroundColor = 'red';
     inputCityBorder.style.border = "2px double red";
   }
@@ -151,145 +155,45 @@ const validateEmail = (inputEmail) => {
     iconErrorEmail.style.backgroundColor = '#32CD32';
     inputEmailBorder.style.border = "2px solid #32CD32"
   }
+  //sinon on affiche qu'il y a une erreur
   else {
     console.log('email c est pas bon, vide ou pas ok regex');
     msgErrorEmail.style.display = 'contents';
+    msgErrorEmail.textContent= valueEmail + " " + "ne peut pas etre un email. Format d'email attendu : contact@origino.fr"
     iconErrorEmail.style.backgroundColor = 'red';
     inputEmailBorder.style.border = "2px double red"
   }
 }
 
 /*------------------------Validation a l'envoi--------------------------*/
-/*const formValidation = () => {
-  let message = document.getElementById('message');
-  let uname = document.form.lastName;
-  let firstname = document.form.firstName;
-  let uadd = document.form.address;
-  let ucity = document.form.city;
-  let uemail = document.form.email;
-
-  if (lastName_validation(uname)) {
-    if (firstName_validation(firstname, 3, 12)) {
-      if (address_validation(uadd)) {
-        if (city_validation(ucity)) {
-          if (email_validation(uemail)) {
-
-          }
-        }
-      }
-    }
-  }
-  else {
-    return false;
-  }
-}
-
-//Nom
-const lastName_validation = (uname) => {
-  let regex = /^[A-Za-z]+$/;
-  if (uname.value.match(regex)) {
-    return true;
-  }
-  else {
-    message.textContent = 'Votre nom ne doit contenir que des caracteres alphabétique';
-    message.style.color = 'red';
-    uname.focus();
-    return false;
-  }
-}
-
-//Prènom
-const firstName_validation = (firstname) => {
-  let regex = /^[A-Za-z]+$/;
-  if (firstname.value.match(regex)) {
-    return true;
-  }
-  else {
-    message.textContent = 'Votre nom ne doit contenir que des caracteres alphabétique';
-    message.style.color = 'red';
-    firstname.focus();
-    return false;
-  }
-}
-
-//Adresse
-const address_validation = (uadd) => {
-  let regex = /^\d+\s[A-z]+\s[A-z]+/;
-  if (uadd.value.match(regex)) {
-    return true;
-  }
-  else {
-    message.textContent = 'Votre adresse ne doit contenir que des chiffres et des lettres';
-    message.style.color = 'red';
-    uadd.focus();
-    return false;
-  }
-}
-
-//Ville
-const city_validation = (ucity) => {
-  let regex = /^[A-Za-z]+$/;
-  if (ucity.value.match(regex)) {
-    return true;
-  }
-  else {
-    message.textContent = 'Votre ville ne doit contenir que des caractere alphabétique';
-    message.style.color = 'red';
-    ucity.focus();
-    return false;
-  }
-}
-
-//Email
-const email_validation = (uemail) => {
-  let mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  if (uemail.value.match(mailformat)) {
-    return true;
-  }
-  else {
-    message.textContent = 'Vous avez entrer une adresse mail invalide!';
-    message.style.color = 'red';
-    uemail.focus();
-    return false;
-  }
-}*/
-
-/*const envoyer = () => {
-  if (uname == true && firstname == true && uadd == true && ucity == true && uemail == true) {
-    document.getElementById('message').innerText = "Commande validé";
-    document.getElementById('confirmer-panier').submit();
-  }
-  else {
-    document.getElementById('message').innerText = "Le formulaire n'est pas complet";
-  }
-}*/
-
-function disableSubmit(disabled) {
-  if (disabled) {
-    document
-      .getElementById("confirmer-panier")
-      .setAttribute("disabled", true);
-  } else {
-    document
-      .getElementById("confirmer-panier")
-      .removeAttribute("disabled");
-  }
-}
-
+//récupération de l'espace message dans le html
 const messageValidation = () => {
   return document.getElementById("message");
 }
+
+//Ajout d'un evenement sur le bouton commander et validation formulaire
 const validateFormCart = () => {
+  //récupération du bouton commander
   let buttonValider = document.getElementById("confirmer-panier");
 
-  //REGEX
+  //Création de REGEX pour la validation
+  //regex uniquement des lettre en minuscule et majuscule
   let regexLetter = /^[a-zA-Z]+$/;
+
+  //regex adresse chiffre et lettre sans caractére spéciaux
+  //exemple attendu : 23 rue origino
   let regexAdd = /^\d+\s[A-z]+\s[A-z]+/;
+
+  //regex email chiffre lettre @ 
+  //exemple attendu: contact95@origino.fr
   let regexMail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-  //ecouter lors du clique sur le bouton commander
+  //Ajout d'un evenement pour ecouter lors du clique sur le bouton commander
   buttonValider.addEventListener('click', (e) => {
+    //on annule le comportement par defaut du bouton
     e.preventDefault();
+
+    //Récuperation des inputs du formulaire
     //nom
     let inputName = document.getElementById('lastName');
     //prenom
@@ -301,18 +205,29 @@ const validateFormCart = () => {
     //email
     let inputEmail = document.getElementById('email');
 
+    //Validation des valeurs saisies dans les inputs avec nos regex
+    //nom
     let testName = regexLetter.test(inputName.value);
+    //prenom
     let testFirstname = regexLetter.test(inputFirstName.value);
+    //adresse
     let testAddress = regexAdd.test(inputAddress.value);
+    //ville
     let testCity = regexLetter.test(inputCity.value);
+    //email
     let testMail = regexMail.test(inputEmail.value);
 
+    //Les condition pour que la commande soit valider
+    //tout les champs doivent etre true(vrai) a notre validation ci-dessus
     if (testName == true && testFirstname == true && testAddress == true && testCity == true && testMail == true) {
       messageValidation().innerText = "Commande valider";
       messageValidation().style.color = 'green';
       console.log("formulaire OK envoie des données");
+
+      //appel de la fonction d'envoi des donnees
       ticket();
     }
+    //sinon on envoie pas les données et on affiche un message d'erreur
     else {
       messageValidation().innerText = "Commande impossible, tout les champs doivent etre rempli et valide";
       messageValidation().style.color ='red';
