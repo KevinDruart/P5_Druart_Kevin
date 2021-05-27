@@ -1,19 +1,81 @@
 /*-------------Création de la mise en page de la page panier--------------------*/
 
+const affichageConfirm = (ticketOrderId,ticketNameOrder,ticketPriceOrder) => {
+    let confirmMain = document.getElementById('confirm');
+    let sectionHaute = create('section', 'id', 'section-haute');
+    let annonce = create('div', 'class', 'annonce');
+    let title = create('h1', 'id', 'title-confirm');
+    let alert = create('div', 'id', 'alert-confirm');
+    //creation de la section principale
+    let sectionMain = create('section', 'id', 'section-main');
+    let textConfirm = create('p', 'id', 'text-confirm');
+    let ticketOrderRecap = create('div', 'id', 'ticket-order');
+
+    //creation du tableau de recapitulatif commande
+    let tableOrder = create('table', 'id', 'table-order');
+
+    //creation de l'entête du tableau
+    let headerTableOrder = create("thead", "class", "header-tableOrder");
+    let ligneHeader = create("tr", "class", "ligneHeaderOrder");
+    let orderIdColumn = create("th", "class", "order-idColumn");
+    let dateColumn = create("th", "class", "dateOrderColumn");
+    let totalPriceColumn = create("th", "class", "priceHeaderOrderColumn");
+
+    //creation contenu du tableau
+    let orderIdLigne = create("tr");
+    let orderId = create("td", "class", "order-id")
+    let orderDate = create("td", "class", "order-date");
+    let orderPrice = create("td", "class", "order-price");
+
+    //hierarchisation
+    //section haute
+    confirmMain.appendChild(sectionHaute);
+    sectionHaute.appendChild(annonce);
+    sectionHaute.appendChild(title);
+    sectionHaute.appendChild(alert);
+    //section principale
+    confirmMain.appendChild(sectionMain);
+    sectionMain.appendChild(textConfirm);
+    sectionMain.appendChild(ticketOrderRecap);
+    sectionMain.appendChild(tableOrder);
+    //tableau recap order
+    tableOrder.appendChild(headerTableOrder);
+    headerTableOrder.appendChild(ligneHeader);
+    ligneHeader.appendChild(orderIdColumn);
+    ligneHeader.appendChild(dateColumn);
+    ligneHeader.appendChild(totalPriceColumn);
+    //contenu tableau
+    tableOrder.appendChild(orderIdLigne);
+    orderIdLigne.appendChild(orderId);
+    orderIdLigne.appendChild(orderDate);
+    orderIdLigne.appendChild(orderPrice);
+
+    //Attribution des donnees
+    title.textContent = 'Commande confirmé';
+    alert.textContent = 'Votre commande a bien etait validé';
+    textConfirm.textContent = ticketNameOrder + " " + "Merci pour votre confiance et votre commande.";
+
+    orderId.textContent = ticketOrderId;
+    orderDate.textContent = "date";
+    orderPrice.textContent = ticketPriceOrder;
+
+
+}
+
 const affichagePanier = (article, index) => {
-        //selection des message erreur du formulaire
-        let msgErrorName = document.getElementById('error-name');
-        let msgErrorFirstname = document.getElementById('error-firstname');
-        let msgErrorAddress = document.getElementById('error-address');
-        let msgErrorCity = document.getElementById('error-city');
-        let msgErrorEmail = document.getElementById('error-email');
-    
-        //on cache les message eurreur formulaire par défaut
-        msgErrorName.style.display ='none';
-        msgErrorFirstname.style.display ='none';
-        msgErrorAddress.style.display ='none';
-        msgErrorCity.style.display ='none';
-        msgErrorEmail.style.display ='none';
+    //selection des message erreur du formulaire
+    let msgErrorName = document.getElementById('error-name');
+    let msgErrorFirstname = document.getElementById('error-firstname');
+    let msgErrorAddress = document.getElementById('error-address');
+    let msgErrorCity = document.getElementById('error-city');
+    let msgErrorEmail = document.getElementById('error-email');
+
+    //on cache les message eurreur formulaire par défaut
+    msgErrorName.style.display = 'none';
+    msgErrorFirstname.style.display = 'none';
+    msgErrorAddress.style.display = 'none';
+    msgErrorCity.style.display = 'none';
+    msgErrorEmail.style.display = 'none';
 
 
     //on selectionne la balise "cart-info" pour y injecter nos elements
@@ -262,13 +324,13 @@ const errorServer = () => {
     console.log('For dev: erreur serveur');
 }
 /*------------ajout du nombre d'article dans le panier sur la nav----------*/
-if (monPanier !== null) {
+/*if (monPanier !== null) {
     //on selectionne la balise 'panier-length' pour y injecter nos elements
     let panierLength = document.getElementById('panierLength');
 
     //Attribution des données aux élements créees
     panierLength.textContent = (monPanier.length);
-}
+}*/
 
 
 
