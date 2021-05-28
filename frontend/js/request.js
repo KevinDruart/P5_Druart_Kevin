@@ -6,11 +6,11 @@ const getRequest = async (url) => {
     return await response.json();
 }
 
-const statusCode = () => {
-    let statusCodeRequest = getRequest(response.status);
-    console.log(statusCodeRequest);
+const postRequest = async (url,options) => {
+    const response = await fetch(url,options);
+    console.log(response.status);
+    return await response.json();
 }
-statusCode();
 
 /*----------------------Gestion du localStorage-------------------------- */
 

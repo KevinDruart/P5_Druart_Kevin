@@ -78,6 +78,7 @@ exports.orderTeddies = (req, res, next) => {
   Promise.all(queries).then(
     (teddies) => {
       const orderId = uuid();
+      console.log(orderId);
       return res.status(201).json({
         contact: req.body.contact,
         products: teddies,

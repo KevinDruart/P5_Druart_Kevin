@@ -1,7 +1,12 @@
 /*-------------Création de la mise en page de la page panier--------------------*/
 
-const affichageConfirm = (ticketOrderId, ticketNameOrder, ticketPriceOrder) => {
+const affichageConfirm = (datas) => {
+    //recuperation de la balise main ou sera injecter la view
     let confirmMain = document.getElementById('confirm');
+
+    // création des elements de la page
+
+    //Section haute
     let sectionHaute = create('section', 'id', 'section-haute');
     let annonce = create('div', 'class', 'annonce');
     let title = create('h1', 'id', 'title-confirm');
@@ -9,28 +14,40 @@ const affichageConfirm = (ticketOrderId, ticketNameOrder, ticketPriceOrder) => {
     let imgCheck = create('i', 'class', 'fas fa-check');
     let alert = create('div', 'id', 'alert-confirm');
 
-    //creation de la section principale
+    //Section principale
     let sectionMain = create('section', 'id', 'section-main');
     let textConfirm = create('p', 'id', 'text-confirm');
     let ticketOrderRecap = create('div', 'id', 'ticket-order');
 
-    //creation du tableau de recapitulatif commande
+    //Tableau de recapitulatif commande
     let tableOrder = create('table', 'id', 'table-order');
 
-    //creation de l'entête du tableau
+    //Entête du tableau
     let headerTableOrder = create("thead", "class", "header-tableOrder");
     let ligneHeader = create("tr", "class", "ligneHeaderOrder");
     let orderIdColumn = create("th", "class", "order-idColumn");
     let dateColumn = create("th", "class", "dateOrderColumn");
     let totalPriceColumn = create("th", "class", "priceHeaderOrderColumn");
 
-    //creation contenu du tableau
+    //Contenu du tableau
     let orderIdLigne = create("tr");
     let orderId = create("td", "class", "order-id")
     let orderDate = create("td", "class", "order-date");
     let orderPrice = create("td", "class", "order-price");
 
-    //hierarchisation
+    //recuperation de la date
+    let dateNow = new Date();
+    let dateLocale = dateNow.toLocaleString('fr-FR',{
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric'});
+
+    //Hierarchisation
+
     //section haute
     confirmMain.appendChild(sectionHaute);
     sectionHaute.appendChild(annonce);
@@ -38,17 +55,20 @@ const affichageConfirm = (ticketOrderId, ticketNameOrder, ticketPriceOrder) => {
     annonce.appendChild(annonceGlobal);
     annonceGlobal.appendChild(imgCheck);
     annonceGlobal.appendChild(alert);
+
     //section principale
     confirmMain.appendChild(sectionMain);
     sectionMain.appendChild(textConfirm);
     sectionMain.appendChild(ticketOrderRecap);
     ticketOrderRecap.appendChild(tableOrder);
+
     //tableau recap order
     tableOrder.appendChild(headerTableOrder);
     headerTableOrder.appendChild(ligneHeader);
     ligneHeader.appendChild(orderIdColumn);
     ligneHeader.appendChild(dateColumn);
     ligneHeader.appendChild(totalPriceColumn);
+
     //contenu tableau
     tableOrder.appendChild(orderIdLigne);
     orderIdLigne.appendChild(orderId);
@@ -56,20 +76,26 @@ const affichageConfirm = (ticketOrderId, ticketNameOrder, ticketPriceOrder) => {
     orderIdLigne.appendChild(orderPrice);
 
     //Attribution des donnees
-    title.textContent = 'Commande confirmé';
-    alert.textContent = 'Votre commande a bien etait validé';
-    textConfirm.textContent = ticketNameOrder + ", merci pour votre confiance et votre commande.";
 
+    //titre de la page
+    title.textContent = 'Commande confirmé';
+    //alert
+    alert.textContent = 'Votre commande a bien etait validé';
+    textConfirm.textContent = ticketNameOrder + ", merci pour votre confiance et votre commande. Trouver ci-dessous le reçu de commande";
+    //tableau recap
     orderIdColumn.textContent = "Numero de commande";
     dateColumn.textContent = "Date";
     totalPriceColumn.textContent = "Montant totale";
     orderId.textContent = ticketOrderId;
-    orderDate.textContent = "date";
+    orderDate.textContent = dateLocale;
     orderPrice.textContent = euro.format(ticketPriceOrder);
 
     //modification du style
+
+    //titre de la page
     title.style.paddingLeft = '1%';
 
+    //alert
     annonceGlobal.style.display = 'flex';
     annonceGlobal.style.backgroundColor = '#5cbc72';
     annonceGlobal.style.alignItems = 'center';
@@ -81,18 +107,16 @@ const affichageConfirm = (ticketOrderId, ticketNameOrder, ticketPriceOrder) => {
     alert.style.color = '#fff';
     alert.style.fontSize = '2em';
 
+    //message de confirmation
     textConfirm.style.fontSize = '1.2em';
     textConfirm.style.paddingLeft = '2%';
     textConfirm.style.marginTop = '2%';
 
-    ticketOrderRecap.style.paddingLeft ='5%';
+    //tableau recapitulatif
+    ticketOrderRecap.style.paddingLeft = '5%';
     ticketOrderRecap.style.textAlign = 'center';
-
     tableOrder.style.width = '50%';
     tableOrder.style.marginBottom = '15%';
-
-
-
 }
 
 const affichagePanier = (article, index) => {
@@ -357,13 +381,13 @@ const errorServer = () => {
     console.log('For dev: erreur serveur');
 }
 /*------------ajout du nombre d'article dans le panier sur la nav----------*/
-/*if (monPanier !== null) {
+if (monPanier !== null) {
     //on selectionne la balise 'panier-length' pour y injecter nos elements
     let panierLength = document.getElementById('panierLength');
 
     //Attribution des données aux élements créees
     panierLength.textContent = (monPanier.length);
-}*/
+}
 
 
 
