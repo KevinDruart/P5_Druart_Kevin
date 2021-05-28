@@ -9,10 +9,11 @@ const listeTeddies = () => {
                 console.log(produit._id);
             })
         })
-      /*  .catch(() => {
+        .catch((error) => {
+            console.log(error);
             //appel a la fonction "errorServer"
-            //errorServer();
-        })*/
+            errorServer();
+        })
 }
 listeTeddies();
 

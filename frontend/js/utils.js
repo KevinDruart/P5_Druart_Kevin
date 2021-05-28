@@ -43,21 +43,25 @@ const videPanier = () => {
 
 /*-------------------------------Gestion validation ------------------------------- */
 //Validation formulaire avant envoie des données au serveur
+
 //validation nom
 const validateName = (inputName) => {
   let inputNameBorder = document.getElementById('lastName');
   let msgError = document.getElementById('error-name');
   let iconError = document.querySelector('.icon-name');
-
   const valueName = inputName.value.trim();
+
   //regex letters
-  const letters = /^[A-Za-z]+$/;
+  const letters = /^[a-zA-ZéèîïÉÈÎÏ]+([-'\s][a-zA-ZéèîïÉÈÎÏ]+)?$/;
+
+  //Validation en temps reel et affichage signe d'erreur
   if (valueName.length !== 0 && valueName.match(letters)) {
     console.log('ok quelque chose est entrer et ok regex:', valueName);
     msgError.style.display = 'none';
     iconError.style.backgroundColor = '#32CD32';
     inputNameBorder.style.border = "2px solid #32CD32"
   }
+  //on affiche rouge et message d'erreur si input invalide 
   else {
     console.log('nom c est pas bon, vide ou pas ok regex');
     msgError.style.display = 'contents';
@@ -74,15 +78,18 @@ const validateFirstName = (inputFirstName) => {
   let msgErrorFirstname = document.getElementById('error-firstname');
   let iconErrorFirstname = document.querySelector('.icon-firstname');
   const valueFirstName = inputFirstName.value.trim();
-  // creation regex letters
-  const letters = /^[A-Za-z]+$/;
 
+  // creation regex letters
+  const letters = /^[a-zA-ZéèîïÉÈÎÏ]+([-'\s][a-zA-ZéèîïÉÈÎÏ]+)?$/;
+
+  //Validation en temps reel et affichage signe d'erreur
   if (valueFirstName.length !== 0 && valueFirstName.match(letters)) {
     console.log('ok prenom quelque chose est entrer et ok regex:', valueFirstName);
     msgErrorFirstname.style.display = 'none';
     iconErrorFirstname.style.backgroundColor = '#32CD32';
     inputFirstnameBorder.style.border = "2px solid #32CD32"
   }
+  //on affiche rouge et message d'erreur si input invalide 
   else {
     console.log('prenom c est pas bon, vide ou il y a des chiffres');
     msgErrorFirstname.style.display = 'contents';
@@ -98,15 +105,18 @@ const validateAddress = (inputAddress) => {
   let msgErrorAddress = document.getElementById('error-address');
   let iconErrorAddress = document.querySelector('.icon-address');
   const valueAddress = inputAddress.value.trim();
+
   //creation de la regex pour adresse
   const lettersNumbers = /^\d+\s[A-z]+\s[A-z]+/;
 
+  //Validation en temps reel et affichage signe d'erreur
   if (valueAddress.length !== 0 && valueAddress.match(lettersNumbers)) {
     console.log('ok adresse quelque chose est entrer et ok regex:', valueAddress);
     msgErrorAddress.style.display = 'none';
     iconErrorAddress.style.backgroundColor = '#32CD32';
     inputAddressBorder.style.border = "2px solid #32CD32"
   }
+  //on affiche rouge et message d'erreur si input invalide 
   else {
     console.log('adresse c est pas bon, vide ou pas ok regex');
     msgErrorAddress.style.display = 'contents';
@@ -122,14 +132,18 @@ const validateCity = (inputCity) => {
   let msgErrorCity = document.getElementById('error-city');
   let iconErrorCity = document.querySelector('.icon-city');
   const valueCity = inputCity.value.trim();
+
   //création de la regex letter 
-  const letters = /^[A-Za-z]+$/;
+  const letters = /^[a-zA-ZéèîïÉÈÎÏ][a-zA-ZéèîïÉÈÎÏ]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zA-ZéèîïÉÈÎÏ]+)?$/;
+
+  //Validation en temps reel et affichage signe d'erreur
   if (valueCity.length !== 0 && valueCity.match(letters)) {
     console.log('ok ville quelque chose est entrer et ne contient pas de chiffre : ', valueCity);
     msgErrorCity.style.display = 'none';
     iconErrorCity.style.backgroundColor = '#32CD32';
     inputCityBorder.style.border = "2px solid #32CD32"
   }
+  //on affiche rouge et message d'erreur si input invalide 
   else {
     console.log('ville c est pas bon il y a rien ou il y a des chiffres');
     msgErrorCity.style.display = 'contents';
@@ -145,21 +159,22 @@ const validateEmail = (inputEmail) => {
   let msgErrorEmail = document.getElementById('error-email');
   let iconErrorEmail = document.querySelector('.icon-email');
   const valueEmail = inputEmail.value.trim();
+
   //creation de la  regex mail
   const mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-  //la longueur est differente de 0 et si regex ok
+  //Validation en temps reel et affichage signe d'erreur
   if (valueEmail.length !== 0 && valueEmail.match(mailFormat)) {
     console.log('ok email quelque chose est entrer et ok regex : ', valueEmail);
     msgErrorEmail.style.display = 'none';
     iconErrorEmail.style.backgroundColor = '#32CD32';
     inputEmailBorder.style.border = "2px solid #32CD32"
   }
-  //sinon on affiche qu'il y a une erreur
+  //on affiche rouge et message d'erreur si input invalide 
   else {
     console.log('email c est pas bon, vide ou pas ok regex');
     msgErrorEmail.style.display = 'contents';
-    msgErrorEmail.textContent= valueEmail + " " + "ne peut pas etre un email. Format d'email attendu : contact@origino.fr"
+    msgErrorEmail.textContent = valueEmail + " " + "ne peut pas etre un email. Format d'email attendu : contact@origino.fr"
     iconErrorEmail.style.backgroundColor = 'red';
     inputEmailBorder.style.border = "2px double red"
   }
@@ -178,7 +193,7 @@ const validateFormCart = () => {
 
   //Création de REGEX pour la validation
   //regex uniquement des lettre en minuscule et majuscule
-  let regexLetter = /^[a-zA-Z]+$/;
+  let regexLetter = /^[a-zA-ZéèîïÉÈÎÏ]+([-'\s][a-zA-ZéèîïÉÈÎÏ]+)?$/;
 
   //regex adresse chiffre et lettre sans caractére spéciaux
   //exemple attendu : 23 rue origino
@@ -230,7 +245,7 @@ const validateFormCart = () => {
     //sinon on envoie pas les données et on affiche un message d'erreur
     else {
       messageValidation().innerText = "Commande impossible, tout les champs doivent etre rempli et valide";
-      messageValidation().style.color ='red';
+      messageValidation().style.color = 'red';
       console.log("ERREUR DANS LE FORMULAIRE" + testName + testFirstname + testAddress + testCity + testMail);
     }
   });
