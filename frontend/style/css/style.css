@@ -1,0 +1,404 @@
+/*----------------------------------HEADER------------------------------------------*/
+.container {
+  width: 100%;
+  padding-right: var(--bs-gutter-x, 0.75rem);
+  padding-left: var(--bs-gutter-x, 0.75rem);
+  margin-left: auto;
+  margin-right: auto;
+}
+.container header {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid lightgray;
+  justify-content: center;
+  display: flex;
+}
+.container header a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  margin-right: auto;
+}
+.container header a .fs-4 {
+  padding-right: 30%;
+  color: #212529;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+  margin-top: 0;
+}
+.nav .nav-link {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #008CBA;
+  text-decoration: none;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+.nav .active {
+  color: #fff;
+  background-color: #008CBA;
+  border-radius: 0.25rem;
+}
+
+a .badge {
+  display: inline-block;
+  padding: 0.35em 0.65em;
+  font-size: 0.75em;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+  background-color: #008CBA;
+  border-radius: 50rem;
+}
+
+/*-----------------------------------FOOTER--------------------------------------*/
+footer {
+  text-align: center;
+  background-color: lightgray;
+}
+
+/* page INDEX*/
+#index h1 {
+  text-align: center;
+  font-size: 2em;
+}
+
+#card .Block {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  box-shadow: 1px 1px 1px 1px lightgray, 0px 0px 0px 0px gray;
+}
+#card .Block .B1 {
+  width: auto;
+  display: flex;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+#card .Block .B1 .Imageproduit {
+  width: 100%;
+}
+#card .Block .B2 {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+#card .Block .B2 .Nomproduits {
+  margin: auto;
+  font-size: 1.5em;
+}
+#card .Block .B2 .Prixproduit {
+  margin: 2PX 0PX 2PX 0PX;
+  color: #008CBA;
+  font-weight: bold;
+  font-size: 1em;
+}
+#card .Block .B2 a {
+  background-color: #008CBA;
+  color: #fff;
+  padding: 10px 0px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+#card .Block .B2 a a:hover {
+  border: dashed #008CBA;
+  background-color: #fff;
+  color: #008CBA;
+}
+
+@media only screen and (min-width: 480px) {
+  section#card .Block {
+    display: flex;
+    flex-direction: row;
+  }
+  section#card .Block .B1 {
+    width: 60%;
+  }
+  section#card .Block .B2 {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  section#card .Block .B2 a {
+    padding: 10px 50px;
+    margin-bottom: 5%;
+    border-radius: 5%;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .Block {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .Block .B2 a {
+    padding: 10px 100px;
+    margin-bottom: 5%;
+    border-radius: 0%;
+  }
+}
+/*-------------------------------------page PRODUIT-------------------------------------*/
+.order1 {
+  grid-area: img;
+}
+
+.order2 {
+  grid-area: description;
+}
+
+.order3 {
+  grid-area: price;
+}
+
+#Blockdescription {
+  display: grid;
+  grid-template-areas: "img" "description" "price";
+  grid-gap: 10px;
+  padding: 10px;
+}
+#Blockdescription .B1description {
+  text-align: center;
+  font-size: 20px;
+}
+#Blockdescription .B1description .Imagedescription {
+  width: 100%;
+}
+#Blockdescription .B2description {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+#Blockdescription .B2description .Nomdescription {
+  font-size: 1.5em;
+  margin: 1% 0% 1% 0%;
+}
+#Blockdescription .B2description .Nomdescription, #Blockdescription .B2description .Prixdescription {
+  color: #008CBA;
+}
+#Blockdescription .B2description .Prixdescription {
+  font-size: 1.2em;
+}
+#Blockdescription .B2description .Descriptionproduit {
+  font-size: 1em;
+}
+
+label.labelselect {
+  font-size: 1.2em;
+}
+
+.select-option {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: space-around;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 10px;
+  font-size: 1em;
+}
+.select-option #Option {
+  margin-bottom: 5%;
+}
+
+#panier {
+  background-color: #008CBA;
+  color: #fff;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1.4em;
+  cursor: pointer;
+}
+#panier a:hover {
+  border: dashed #008CBA;
+  background-color: #fff;
+  color: #008CBA;
+}
+
+@media only screen and (min-width: 480px) {
+  #Blockdescription {
+    display: grid;
+    grid-template-areas: "img img description descritpion" "img img price price";
+    grid-gap: 10px;
+    padding: 10px;
+  }
+}
+/*---------------------------page PANIER-------------------------------*/
+.text-center.header {
+  text-align: center;
+}
+
+#cart-info {
+  padding-bottom: 10%;
+}
+#cart-info h4.titlePanier {
+  font-size: 1em;
+  display: flex;
+  justify-content: SPACE-AROUND;
+}
+#cart-info table {
+  font-size: 0.8EM;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+}
+#cart-info table thead {
+  background: #008CBA;
+  color: #fff;
+}
+#cart-info table thead, #cart-info table tbody {
+  text-align: center;
+}
+
+img.articleImage {
+  width: 60%;
+}
+
+section #form-checkout {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 0.8em;
+}
+section #form-checkout form {
+  display: flex;
+  flex-direction: column;
+}
+section #form-checkout form .email-group {
+  padding-bottom: 5%;
+}
+
+#form {
+  padding-bottom: 20%;
+}
+#form label {
+  font-size: 1.5em;
+  color: #008CBA;
+}
+#form .input-container {
+  display: -ms-flexbox;
+  /* IE10 */
+  display: flex;
+  width: 100%;
+  margin-bottom: 15px;
+  align-items: center;
+}
+#form .icon {
+  padding: 3.6px;
+  background: #008CBA;
+  color: white;
+  min-width: 50px;
+  text-align: center;
+}
+#form .input-field {
+  width: 100%;
+  padding: 0.8%;
+  outline: none;
+  border: 2px dashed #008CBA;
+}
+#form .input-field:focus {
+  border: 2px solid #008CBA;
+}
+
+#error-name, #error-firstname, #error-address, #error-city, #error-email {
+  font-size: 0.8em;
+  color: RED;
+}
+
+input#confirmer-panier {
+  font-size: 1em;
+  float: right;
+}
+
+.btn-submit {
+  background-color: #008CBA;
+  color: white;
+  padding: 15px 20px;
+  margin-bottom: 2%;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+.btn-submit .btn-submit:hover {
+  opacity: 3;
+}
+
+@media only screen and (min-width: 480px) {
+  .body {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+  .body #cart-info {
+    width: 40%;
+  }
+  .body section#form-checkout {
+    width: 60%;
+  }
+  .body section#form-checkout .icon {
+    padding: 5px;
+  }
+}
+/*-----------------------page Confirm-----------------------*/
+div#annonce-g {
+  display: flex;
+  margin: 0% auto 0% auto;
+  align-items: center;
+  width: 90%;
+  background-color: #5cbc72;
+}
+div#annonce-g i.fas.fa-check {
+  color: #fff;
+  font-size: 2em;
+  padding: 1% 1% 1% 1%;
+}
+div#annonce-g div#alert-confirm {
+  color: #fff;
+  font-size: 0.8em;
+}
+
+p#text-confirm {
+  margin-top: 2%;
+  text-align: center;
+  font-size: 1em;
+}
+
+#table-order {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+#table-order thead {
+  background-color: #008CBA;
+  color: #fff;
+}
+
+@media only screen and (min-width: 480px) {
+  p#text-confirm {
+    text-align: start;
+    padding-left: 2%;
+  }
+
+  #ticket-order {
+    width: 50%;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

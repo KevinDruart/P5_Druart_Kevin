@@ -1,6 +1,6 @@
 /*-------------Création de la mise en page de la page panier--------------------*/
 
-const affichageConfirm = (datas) => {
+const affichageConfirm = (ticketOrderId, ticketNameOrder, ticketPriceOrder) => {
     //recuperation de la balise main ou sera injecter la view
     let confirmMain = document.getElementById('confirm');
 
@@ -37,14 +37,15 @@ const affichageConfirm = (datas) => {
 
     //recuperation de la date
     let dateNow = new Date();
-    let dateLocale = dateNow.toLocaleString('fr-FR',{
+    let dateLocale = dateNow.toLocaleString('fr-FR', {
         weekday: 'long',
         year: 'numeric',
         month: 'long',
         day: 'numeric',
         hour: 'numeric',
         minute: 'numeric',
-        second: 'numeric'});
+        second: 'numeric'
+    });
 
     //Hierarchisation
 
@@ -95,28 +96,6 @@ const affichageConfirm = (datas) => {
     //titre de la page
     title.style.paddingLeft = '1%';
 
-    //alert
-    annonceGlobal.style.display = 'flex';
-    annonceGlobal.style.backgroundColor = '#5cbc72';
-    annonceGlobal.style.alignItems = 'center';
-    annonceGlobal.style.width = '90%';
-    annonceGlobal.style.margin = '0% auto 0% auto';
-    imgCheck.style.color = '#fff';
-    imgCheck.style.fontSize = '2em';
-    imgCheck.style.padding = '1% 1% 1% 1%';
-    alert.style.color = '#fff';
-    alert.style.fontSize = '2em';
-
-    //message de confirmation
-    textConfirm.style.fontSize = '1.2em';
-    textConfirm.style.paddingLeft = '2%';
-    textConfirm.style.marginTop = '2%';
-
-    //tableau recapitulatif
-    ticketOrderRecap.style.paddingLeft = '5%';
-    ticketOrderRecap.style.textAlign = 'center';
-    tableOrder.style.width = '50%';
-    tableOrder.style.marginBottom = '15%';
 }
 
 const affichagePanier = (article, index) => {
@@ -379,6 +358,10 @@ const errorServer = () => {
     // attribution des donnees
     errorMsg.textContent = 'Une erreur est survenue.. Nos equipes travail a sa resolution, revenez plus tard!';
     console.log('For dev: erreur serveur');
+
+    //style
+    error.style.textAlign = 'center';
+    imgError.style.width = '100%';
 }
 /*------------ajout du nombre d'article dans le panier sur la nav----------*/
 if (monPanier !== null) {
