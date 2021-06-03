@@ -185,7 +185,6 @@ const affichagePanier = (article, index) => {
         /*Suppression de l'article en cliquant sur la poubelle*/
         articleAction.addEventListener("click", function (event) {
             suppressionArticle(event.target.id);
-            console.log(monPanier);
         });
 
         //Hiérarchisation des élements crées
@@ -357,7 +356,6 @@ const errorServer = () => {
 
     // attribution des donnees
     errorMsg.textContent = 'Une erreur est survenue.. Nos equipes travail a sa resolution, revenez plus tard!';
-    console.log('For dev: erreur serveur');
 
     //style
     error.style.textAlign = 'center';

@@ -5,15 +5,12 @@ const selectionProduit = () => {
   /*on recupere l'url actuel et on y extrait l'Id du produit*/
   const urlParams = new URLSearchParams(window.location.search);
   const productId = urlParams.get('id');
-  //console.log('id produit est le ' + productId);
   const teddy = getRequest("http://localhost:3000/api/teddies/" + productId);
   teddy
     .then((data) => {
       cardProduct(data);
     })
     .catch((error) => {
-      console.log(error);
-      console.log('pas le bon produit');
       //On selectionne la section "descriptionproduit"
       let errors = document.getElementById("error");
 
@@ -40,7 +37,6 @@ selectionProduit();
 /*------------------------Ajouter un article au panier---------------------------*/
 
 const ajouterAuPanier = (article) => {
-  console.log(article);
   //declaration de la variable saveLocalStorage stock les valeur envoyer au localstorage
   let monPanier = JSON.parse(localStorage.getItem("produit"));
   //si des produits sont deja dans le local storage

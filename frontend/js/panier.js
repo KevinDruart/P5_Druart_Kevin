@@ -109,8 +109,8 @@ const ticket = async () => {
   //Envoie données formulaire et recupération du numero order (orderId)
   const getTicket = async () => {
     const getOrder = await postRequest("http://localhost:3000/api/teddies/order", options);
-    console.log(getOrder);//ok donnees reçu
-
+    
+    //Redirection vers la page confirm en passant les informations 
     window.location = `./confirm.html?id=${getOrder.orderId}&name=${getOrder.contact.lastName}&prix=${total}`
 
     //vidage du localstorage

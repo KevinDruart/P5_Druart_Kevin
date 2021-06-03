@@ -17,7 +17,7 @@ const euro = new Intl.NumberFormat('fr-FR', {
 /*------------------Fonction de suppression d'article du panier----------------------*/
 
 function suppressionArticle(i) {
-  console.log("suppression article i :", i);
+
   //suppression de l'element i du tableau;
   monPanier.splice(i, 1);
   //on vide le storage avant de le mettre à jour;  
@@ -56,14 +56,12 @@ const validateName = (inputName) => {
 
   //Validation en temps reel et affichage signe d'erreur
   if (valueName.length !== 0 && valueName.match(letters)) {
-    console.log('ok quelque chose est entrer et ok regex:', valueName);
     msgError.style.display = 'none';
     iconError.style.backgroundColor = '#32CD32';
     inputNameBorder.style.border = "2px solid #32CD32"
   }
   //on affiche rouge et message d'erreur si input invalide 
   else {
-    console.log('nom c est pas bon, vide ou pas ok regex');
     msgError.style.display = 'contents';
     msgError.textContent = valueName + " " + "ne peut pas être un nom. veuillez saisir un nom valide uniquement avec des caracteres alphabétiques"
     iconError.style.backgroundColor = 'red';
@@ -84,14 +82,12 @@ const validateFirstName = (inputFirstName) => {
 
   //Validation en temps reel et affichage signe d'erreur
   if (valueFirstName.length !== 0 && valueFirstName.match(letters)) {
-    console.log('ok prenom quelque chose est entrer et ok regex:', valueFirstName);
     msgErrorFirstname.style.display = 'none';
     iconErrorFirstname.style.backgroundColor = '#32CD32';
     inputFirstnameBorder.style.border = "2px solid #32CD32"
   }
   //on affiche rouge et message d'erreur si input invalide 
   else {
-    console.log('prenom c est pas bon, vide ou il y a des chiffres');
     msgErrorFirstname.style.display = 'contents';
     msgErrorFirstname.textContent = valueFirstName + " " + "ne peut pas être un prénom. veuillez saisir un prénom valide uniquement avec des caracteres alphabétiques"
     iconErrorFirstname.style.backgroundColor = 'red';
@@ -111,14 +107,12 @@ const validateAddress = (inputAddress) => {
 
   //Validation en temps reel et affichage signe d'erreur
   if (valueAddress.length !== 0 && valueAddress.match(lettersNumbers)) {
-    console.log('ok adresse quelque chose est entrer et ok regex:', valueAddress);
     msgErrorAddress.style.display = 'none';
     iconErrorAddress.style.backgroundColor = '#32CD32';
     inputAddressBorder.style.border = "2px solid #32CD32"
   }
   //on affiche rouge et message d'erreur si input invalide 
   else {
-    console.log('adresse c est pas bon, vide ou pas ok regex');
     msgErrorAddress.style.display = 'contents';
     msgErrorAddress.textContent = valueAddress + " " + "n'est pas une adresse valide. Format d'adresse attendu : 25 rue origino"
     iconErrorAddress.style.backgroundColor = 'red';
@@ -138,14 +132,12 @@ const validateCity = (inputCity) => {
 
   //Validation en temps reel et affichage signe d'erreur
   if (valueCity.length !== 0 && valueCity.match(letters)) {
-    console.log('ok ville quelque chose est entrer et ne contient pas de chiffre : ', valueCity);
     msgErrorCity.style.display = 'none';
     iconErrorCity.style.backgroundColor = '#32CD32';
     inputCityBorder.style.border = "2px solid #32CD32"
   }
   //on affiche rouge et message d'erreur si input invalide 
   else {
-    console.log('ville c est pas bon il y a rien ou il y a des chiffres');
     msgErrorCity.style.display = 'contents';
     msgErrorCity.textContent = valueCity + " " + "ne peut pas etre une ville et ce champ ne peut rester vide. Veuillez ne saisir que des caractéres alphabétique."
     iconErrorCity.style.backgroundColor = 'red';
@@ -165,14 +157,12 @@ const validateEmail = (inputEmail) => {
 
   //Validation en temps reel et affichage signe d'erreur
   if (valueEmail.length !== 0 && valueEmail.match(mailFormat)) {
-    console.log('ok email quelque chose est entrer et ok regex : ', valueEmail);
     msgErrorEmail.style.display = 'none';
     iconErrorEmail.style.backgroundColor = '#32CD32';
     inputEmailBorder.style.border = "2px solid #32CD32"
   }
   //on affiche rouge et message d'erreur si input invalide 
   else {
-    console.log('email c est pas bon, vide ou pas ok regex');
     msgErrorEmail.style.display = 'contents';
     msgErrorEmail.textContent = valueEmail + " " + "ne peut pas etre un email. Format d'email attendu : contact@origino.fr"
     iconErrorEmail.style.backgroundColor = 'red';
@@ -237,7 +227,7 @@ const validateFormCart = () => {
     if (testName == true && testFirstname == true && testAddress == true && testCity == true && testMail == true) {
       messageValidation().innerText = "Commande valider";
       messageValidation().style.color = 'green';
-      console.log("formulaire OK envoie des données");
+
 
       //appel de la fonction d'envoi des donnees
       ticket();
@@ -246,7 +236,6 @@ const validateFormCart = () => {
     else {
       messageValidation().innerText = "Commande impossible, tout les champs doivent etre rempli et valide";
       messageValidation().style.color = 'red';
-      console.log("ERREUR DANS LE FORMULAIRE" + testName + testFirstname + testAddress + testCity + testMail);
     }
   });
 }
