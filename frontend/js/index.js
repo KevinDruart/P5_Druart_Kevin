@@ -6,11 +6,9 @@ const listeTeddies = () => {
         .then((produits) => {
             produits.forEach((produit) => {
                 createProduct(produit)
-                console.log(produit._id);
             })
         })
         .catch((error) => {
-            console.log(error);
             //appel a la fonction "errorServer"
             errorServer();
         })
