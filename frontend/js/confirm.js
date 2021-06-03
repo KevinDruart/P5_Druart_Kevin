@@ -2,7 +2,7 @@
 const affichageConfirmPage = () => {
 
 
-    /*//recuperation url
+    //recuperation url
     const urlParams = new URLSearchParams(window.location.search);
     //recuperation des donnees dans url 
     //order id
@@ -19,7 +19,7 @@ const affichageConfirmPage = () => {
     //appel de la view confirm
     if (ticketNameOrder && ticketPriceOrder !== null) {
         affichageConfirm(ticketOrderId, ticketNameOrder, ticketPriceOrder);
-    }*/
+    }
 
 }
 

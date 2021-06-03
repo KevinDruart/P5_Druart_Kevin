@@ -1,0 +1,11 @@
+{
+  "name": "orinoco",
+  "version": "1.0.0",
+  "description": "script pour compiler les style css grace a sass",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch ./style/sass/style.scss:./style/css/style.css",
+    "prefix": "postcss ./style/css/style.css --use autoprefixer -d ./style/css/prefixed/"  },
+  "author": "Kevin Druart",
+  "license": "ISC"
+}

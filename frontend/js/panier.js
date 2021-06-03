@@ -110,9 +110,11 @@ const ticket = async () => {
   const getTicket = async () => {
     const getOrder = await postRequest("http://localhost:3000/api/teddies/order", options);
     console.log(getOrder);//ok donnees reçu
-    getOrder = sessionStorage;
+
+    window.location = `./confirm.html?id=${getOrder.orderId}&name=${getOrder.contact.lastName}&prix=${total}`
+
     //vidage du localstorage
-    //localStorage.clear();
+    localStorage.clear();
   }
   getTicket();
 }

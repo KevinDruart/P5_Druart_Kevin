@@ -1,0 +1,424 @@
+//Gestion des couleurs et tailles
+@import "variables.scss";
+//Gestion des formules pré-enregistré
+@import "mixins.scss";
+
+
+
+/*----------------------------------HEADER------------------------------------------*/
+.container {
+    width: 100%;
+    padding-right: var(--bs-gutter-x, 0.75rem);
+    padding-left: var(--bs-gutter-x, 0.75rem);
+    @include center ;
+    header {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        margin-bottom: 1.5rem;
+        border-bottom: 1px solid $color-secondary;
+        @include justify-content-center;
+        @include d-flex;
+        a {
+            @include d-flex; 
+            @include align-items-center;
+            @include text-decoration-none;
+            margin-right: auto;
+            .fs-4 {
+                padding-right: 30%;
+                color: #212529;
+                 }
+            }
+        } 
+}
+
+.nav {
+    @include d-flex;
+    @include flex-wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    margin-top: 0;
+    .nav-link {
+        display: block;
+        padding: .5rem 1rem;
+        color: $color-primary;
+        text-decoration: none;
+        transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+    }
+    .active {
+        color: $color-four;
+        background-color: $color-primary;
+        border-radius: .25rem;
+        }
+
+}
+
+a .badge {
+    display: inline-block;
+    padding: 0.35em 0.65em;
+    font-size: 0.75em;
+    font-weight: 700;
+    line-height: 1;
+    color: $color-four;
+    @include text-align;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25rem;
+    background-color: $color-primary;
+    border-radius: 50rem;
+  }
+/*-----------------------------------FOOTER--------------------------------------*/
+
+footer {
+    @include text-align;
+    background-color: $color-secondary;
+}
+  /* page INDEX*/
+
+#index {
+    h1 {
+        @include text-align;
+        font-size: $title-index;
+    }
+}
+
+#card {
+    .Block {
+        width: 100%;
+        @include d-flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+        box-shadow: 1px 1px 1px 1px $color-secondary, 0px 0px 0px 0px $color-third;
+        .B1 {
+            width: auto;
+            @include d-flex;
+            @include no-wrap;
+            @include align-content-center;
+            @include justify-content-center;
+            @include align-items-center;
+            .Imageproduit {
+                width: 100%;
+            }
+        }
+        .B2 {
+            @include d-flex;
+            flex-direction: column;
+            @include text-align;
+            .Nomproduits {
+                margin: auto;
+                font-size: $name-card;
+            }
+            .Prixproduit {
+                margin: 2PX 0PX 2PX 0PX;
+                color: $color-primary;
+                font-weight: bold;
+                font-size: $price-card;
+            }
+            a {
+                background-color: $color-primary;
+                color: $color-four;
+                padding: 10px 0px;
+                @include text-align;
+                text-decoration: none;
+                font-size: $btn-look;
+                cursor: pointer;
+                a:hover {
+                    border: dashed $color-primary;
+                    background-color: $color-four;
+                    color: $color-primary;
+                }
+            }
+        }
+    }
+
+}
+
+//MEDIA QUERIES PAGE INDEX
+//480px
+@media only screen and (min-width: 480px) {
+    section#card {
+        
+        .Block {
+            @include d-flex;
+            flex-direction: row;
+            .B1 {
+                width: 60%;
+            }
+            .B2 {
+                 @include center;
+                 a {
+                    padding: 10px 50px;
+                    margin-bottom: 5%;
+                    border-radius: 5%;
+                    }
+            }
+        }
+    }
+  }
+//768px
+  @media only screen and (min-width: 768px) {
+    .Block {
+        width: 60%;
+        @include center;
+        .B2 a {
+            padding: 10px 100px;
+            margin-bottom: 5%;
+            border-radius: 0%;
+            }
+    }  
+  }
+
+
+/*-------------------------------------page PRODUIT-------------------------------------*/
+//disposition page produit
+.order1 { grid-area: img; }
+.order2 { grid-area: description; }
+.order3 { grid-area: price; }
+
+#Blockdescription {
+    display: grid;
+    grid-template-areas:
+      'img'
+      'description'
+      'price';
+    grid-gap: 10px;
+    padding: 10px;
+    .B1description {
+        @include text-align;
+        font-size: 20px;
+        .Imagedescription {
+            width: 100%;
+        }
+    }
+    .B2description {
+        @include d-flex;
+        flex-direction: column;
+        @include text-align;        
+        .Nomdescription {
+            font-size: $name-product;
+            margin: 1% 0% 1% 0%;
+        }
+        .Nomdescription, .Prixdescription {
+            color: $color-primary;
+        }
+        .Prixdescription {
+            font-size: $price-product;
+        }
+        .Descriptionproduit{
+            font-size: $describe-product;
+        }
+        
+
+  }
+}
+
+label.labelselect {
+    font-size: $text-option;
+}
+
+.select-option {
+    @include d-flex;
+    flex-direction: column;
+    @include flex-wrap;
+    align-content: space-around;
+    @include justify-content-center;
+    @include align-items-center;
+    @include text-align;
+    padding-bottom: 10px;
+    font-size: $option;
+    #Option {
+        margin-bottom: 5%;
+    }
+}  
+
+#panier {
+    background-color: $color-primary;
+    color: $color-four;
+    padding: 10px 20px;
+    @include text-align;
+    @include text-decoration-none;
+    font-size: $add-cart;
+    cursor: pointer;
+    a:hover {
+        border: dashed $color-primary;
+        background-color: $color-four;
+        color: $color-primary;
+    }
+}
+
+  //480px
+  @media only screen and (min-width: 480px) {
+    #Blockdescription {
+        display: grid;
+        grid-template-areas:
+          'img img description descritpion'
+          'img img price price';
+        grid-gap: 10px;
+        padding: 10px;
+      }
+    }
+
+/*---------------------------page PANIER-------------------------------*/
+
+.text-center.header {
+    @include text-align;
+}
+
+#cart-info {
+    padding-bottom: 10%;
+    h4.titlePanier {
+        font-size: 1em;
+        @include d-flex;
+        justify-content: SPACE-AROUND;
+    }
+    table {
+        font-size: 0.8EM;
+        @include center;
+        width: 90%;
+        thead {
+            background: $color-primary;
+            color:$color-four
+        }
+        thead, tbody {
+            @include text-align;
+        }
+    }
+}
+
+
+img.articleImage{
+    width: 60%;
+}
+
+section #form-checkout {
+    width: 90%;
+    @include d-flex;
+    flex-direction: column;
+    @include center;
+    font-size: 0.8em;
+    form {
+        @include d-flex;
+        flex-direction: column;
+        .email-group {
+            padding-bottom: 5%;
+        }
+    }
+}
+
+#form {
+    padding-bottom: 20%;
+    label {
+        font-size: 1.5em;
+        color: $color-primary;
+    }
+    .input-container {
+        display: -ms-flexbox; /* IE10 */
+        @include d-flex;
+        width: 100%;
+        margin-bottom: 15px;
+        @include align-items-center;
+      }
+    .icon {
+        padding: 3.6px;
+        background: $color-primary;
+        color: white;
+        min-width: 50px;
+        @include text-align;
+      }
+    .input-field {
+        width: 100%;
+        padding: 0.8%;
+        outline: none;
+        border: 2px dashed $color-primary;
+      }
+    .input-field:focus {
+        border: 2px solid $color-primary;
+      }
+}
+
+#error-name, #error-firstname, #error-address, #error-city, #error-email {
+    font-size: 0.8em;
+    color: RED;
+}
+
+input#confirmer-panier {
+    font-size: 1em;
+    float: right;
+}
+
+.btn-submit {
+    background-color: $color-primary;
+    color: white;
+    padding: 15px 20px;
+    margin-bottom: 2%;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+    .btn-submit:hover {
+        opacity: 3;
+      }
+  }
+  //MEDIA QUERIES page PANIER
+
+  //480px
+  @media only screen and (min-width: 480px) {
+    .body {
+        @include d-flex;
+        flex-direction: row-reverse;
+        #cart-info {
+            width: 40%;
+        }
+        section#form-checkout {
+            width: 60%;
+            .icon {
+                padding: 5px;
+              }
+        }
+    } 
+  }
+  
+
+  /*-----------------------page Confirm-----------------------*/
+  div#annonce-g {
+    display: flex;
+    margin: 0% auto 0% auto;
+    align-items: center;
+    width: 90%;
+    background-color: #5cbc72;
+    i.fas.fa-check {
+        color: $color-four;
+        font-size: 2em;
+        padding: 1% 1% 1% 1%;
+    }
+    div#alert-confirm {
+        color: $color-four;
+        font-size: 0.8em;
+    }
+}
+
+p#text-confirm {
+    margin-top: 2%;
+    text-align: center;
+    font-size: 1em;
+}
+
+  #table-order {
+    width:80%;
+    @include center;
+    thead {
+        background-color: $color-primary;
+        color: $color-four;
+    }
+}
+
+  //480px
+  @media only screen and (min-width: 480px) {
+      p#text-confirm {
+          text-align: start;
+          padding-left: 2%;
+      }
+      #ticket-order {
+        width:50%;
+        }
+    }
