@@ -52,7 +52,7 @@ const validateName = (inputName) => {
   const valueName = inputName.value.trim();
 
   //regex letters
-  const letters = /^[a-zA-ZéèîïÉÈÎÏ]+([-'\s][a-zA-ZéèîïÉÈÎÏ]+)?$/;
+  const letters = /^[a-zA-ZéèçîïÉÈÎÏ]+([-'\s][a-zA-ZéèçîïÉÈÎÏ]+)?$/;
 
   //Validation en temps reel et affichage signe d'erreur
   if (valueName.length !== 0 && valueName.match(letters)) {
@@ -78,7 +78,7 @@ const validateFirstName = (inputFirstName) => {
   const valueFirstName = inputFirstName.value.trim();
 
   // creation regex letters
-  const letters = /^[a-zA-ZéèîïÉÈÎÏ]+([-'\s][a-zA-ZéèîïÉÈÎÏ]+)?$/;
+  const letters = /^[a-zA-ZéèçîïÉÈÎÏ]+([-'\s][a-zA-ZéèçîïÉÈÎÏ]+)?$/;
 
   //Validation en temps reel et affichage signe d'erreur
   if (valueFirstName.length !== 0 && valueFirstName.match(letters)) {
@@ -183,7 +183,7 @@ const validateFormCart = () => {
 
   //Création de REGEX pour la validation
   //regex uniquement des lettre en minuscule et majuscule
-  let regexLetter = /^[a-zA-ZéèîïÉÈÎÏ]+([-'\s][a-zA-ZéèîïÉÈÎÏ]+)?$/;
+  let regexLetter = /^[a-zA-ZéèçîïÉÈÎÏ]+([-'\s][a-zA-ZéèçîïÉÈÎÏ]+)?$/;
 
   //regex adresse chiffre et lettre sans caractére spéciaux
   //exemple attendu : 23 rue origino
