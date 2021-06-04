@@ -7,7 +7,14 @@ const getRequest = async (url) => {
 
 const postRequest = async (url,options) => {
     const response = await fetch(url,options);
-    return await response.json();
+    if (response.status === 200,201) {
+        sessionStorage.setItem("validOrder","true")
+     return await response.json();   
+    }
+    else {
+        sessionStorage.setItem("validOrder","false")
+    }
+    
 }
 
 /*----------------------Gestion du localStorage-------------------------- */

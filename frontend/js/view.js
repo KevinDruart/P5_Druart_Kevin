@@ -338,12 +338,13 @@ const createProduct = (teddy) => {
 }
 /*----------------------Gestion affichage si erreur du serveur---------------------*/
 const errorServer = () => {
+
     //suppression du titre "nos produits"
     document.getElementById('title-index').remove();
 
     //création des elements qui afficheront un message en cas d'erreur
     let error = document.getElementById('card');
-    let imgError = document.createElement('img');
+    //let imgError = document.createElement('img');
     let errorMsg = document.createElement('h4');
 
     //Hierarchisation des elements créer
@@ -361,6 +362,32 @@ const errorServer = () => {
     error.style.textAlign = 'center';
     imgError.style.width = '100%';
 }
+
+
+/*---------------------Gestion erreur affichage commande ------------------------ */
+const errorOrder = () => {
+
+    //création des elements qui afficheront un message en cas d'erreur
+    let errorOrder = document.getElementById('confirm');
+    let imgError = document.createElement('img');
+    let errorOrderMsg = document.createElement('h4');
+
+    //Hierarchisation des elements créer
+    errorOrder.appendChild(imgError);
+    errorOrder.appendChild(errorOrderMsg);
+
+    //Attributs supplémentaires
+    imgError.setAttribute("src", "./images/oups.jpg");
+
+
+    // attribution des donnees
+    errorOrderMsg.textContent = 'Aucune commande trouver';
+
+    //style
+    errorOrder.style.textAlign = 'center';
+    imgError.style.width = '100%';
+}
+
 /*------------ajout du nombre d'article dans le panier sur la nav----------*/
 if (monPanier !== null) {
     //on selectionne la balise 'panier-length' pour y injecter nos elements
