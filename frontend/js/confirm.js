@@ -1,3 +1,4 @@
+//verification avant affichage de la page confirm
 const affichageConfirmPage = () => {
     //recuperation url
     const urlParams = new URLSearchParams(window.location.search);
@@ -11,13 +12,11 @@ const affichageConfirmPage = () => {
     //la validation du numero orderId
     let validUrl = sessionStorage.getItem("validOrder");
 
-
- 
     //Si on a un nom, un prix et un orderId (condition 1)
     if (ticketNameOrder && ticketPriceOrder && ticketOrderId !== null) {
         //vérification du numero orderId (condition 2)
         if (validUrl) {
-            //on appelle la view
+            //on appelle la view de la page confirm
             affichageConfirm(ticketOrderId, ticketNameOrder, ticketPriceOrder);
 
             //commande faite, reinitialisation du sessionStorage qui contient la validation orderId
@@ -28,7 +27,6 @@ const affichageConfirmPage = () => {
             //appel de la view errorOrder
             errorOrder();
         }
-
     }
     //si la condition 1 n'est pas bonne 
     else {
@@ -37,5 +35,5 @@ const affichageConfirmPage = () => {
     }
 }
 
-//Appel de la page qui passe par une verification
+//Appel de la verification 
 affichageConfirmPage();
