@@ -8,33 +8,34 @@ const affichageConfirmPage = () => {
     const ticketNameOrder = urlParams.get('name');
     //prix totale
     const ticketPriceOrder = urlParams.get('prix');
-
-    //Si on a un nom, un prix et un orderId 
-    if (ticketNameOrder && ticketPriceOrder && ticketOrderId !== null)  {
-        //on verifie si la commande est vrai avant d'appeler la view
-        validationOrder(ticketOrderId, ticketNameOrder, ticketPriceOrder);
-    }
-    //sinon on appel la view errorOrder
-    else {
-        errorOrder();
-    }
-}
-
-//Verification de commande
-const validationOrder = (ticketOrderId, ticketNameOrder, ticketPriceOrder) => {
+    //la validation du numero orderId
     let validUrl = sessionStorage.getItem("validOrder");
-    console.log(validUrl);
-    //Si validOrder différent de true alors appel de la view errorOrder
-    if (validUrl !== true) {
+
+
+ 
+    //Si on a un nom, un prix et un orderId (condition 1)
+    if (ticketNameOrder && ticketPriceOrder && ticketOrderId !== null) {
+        //vérification du numero orderId (condition 2)
+        if (validUrl) {
+            //on appelle la view
+            affichageConfirm(ticketOrderId, ticketNameOrder, ticketPriceOrder);
+
+            //commande faite, reinitialisation du sessionStorage qui contient la validation orderId
+            sessionStorage.clear();
+        }
+        //si la condition 2 n'est pas bonne 
+        else {
+            //appel de la view errorOrder
+            errorOrder();
+        }
+
+    }
+    //si la condition 1 n'est pas bonne 
+    else {
+        //appel de la view errorOrder
         errorOrder();
     }
-    //sinon appel de la view de la page confirm
-    else {
-        //on appelle la view
-        affichageConfirm(ticketOrderId, ticketNameOrder, ticketPriceOrder);
-        //on vide le sessionStorage 
-        sessionStorage.clear();
-    }
 }
+
 //Appel de la page qui passe par une verification
 affichageConfirmPage();
