@@ -74,7 +74,7 @@ const ticket = async () => {
   let email = document.getElementById('email').value;
 
 
-  ////Création de l'objet à envoyer, regroupant le formulaire et les articles
+  //Création de l'objet à envoyer, regroupant le formulaire et les articles
   const commandClient = {
     //donnees du formulaire seront stocker ici
     contact: {},

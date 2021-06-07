@@ -16,7 +16,7 @@ const euro = new Intl.NumberFormat('fr-FR', {
 
 /*------------------Fonction de suppression d'article du panier----------------------*/
 
-function suppressionArticle(i) {
+const suppressionArticle = (i) => {
 
   //suppression de l'element i du tableau;
   monPanier.splice(i, 1);

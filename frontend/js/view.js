@@ -37,6 +37,7 @@ const affichageConfirm = (ticketOrderId, ticketNameOrder, ticketPriceOrder) => {
 
     //recuperation de la date
     let dateNow = new Date();
+    //transformation de la date actuel en date locale France
     let dateLocale = dateNow.toLocaleString('fr-FR', {
         weekday: 'long',
         year: 'numeric',
@@ -183,7 +184,9 @@ const affichagePanier = (article, index) => {
         articleAction.style.cursor = "pointer";
 
         /*Suppression de l'article en cliquant sur la poubelle*/
+        //ajout d'un evenement pour ecouter le click
         articleAction.addEventListener("click", function (event) {
+            //au click on supprime du panier l'élement en question
             suppressionArticle(event.target.id);
         });
 
@@ -221,16 +224,18 @@ const affichagePanier = (article, index) => {
     footerLigne.appendChild(deletePanierBox);
     deletePanierBox.appendChild(deletePanier);
 
-    //Vidage du panier 
+    //ajout d'un evenement pour ecouter le click
     deletePanier.addEventListener("click", (e) => {
         //annule l'action par defaut
         e.preventDefault();
+        //au click on appel la fonction videPanier pour vider le panier
         videPanier();
         //confirmation que le panier a bien etait vider
         alert('le panier a bien etait vider!')
     });
-
+    //réalisation d'une boucle pour recuperer chaque prix de chaque produit dans le panier
     monPanier.forEach(priceArticle => {
+        //somme de tout les produit 
         total += priceArticle.price / 100;
     });
 
@@ -261,7 +266,10 @@ const cardProduct = (data) => {
     let label = create("label", "for", "option");
     let selectProduct = create("select", "id", "Option");
     let valid = create("button", "type", "button");
+
+    //ajout d'un evenement pour ecouter le click
     valid.addEventListener('click', () => {
+        //au click on appel la fonction ajouterAuPanier et on lui passe les datas
         ajouterAuPanier(data);
     });
 
