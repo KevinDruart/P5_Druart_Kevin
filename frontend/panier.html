@@ -41,7 +41,7 @@
   <main>
     <!--titre de la page-->
     <div class="text-center header">
-      <h2>Mon panier</h2>
+      <h3>Mon panier</h3>
       <!--si le panier est vide le texte ci-dessous apparait-->
       <p id="panierVide">Votre panier est vide.</p>
     </div>
@@ -60,13 +60,13 @@
         <!--titre formulaire-->
         <h4 class="adress">Adresse de livraison</h4>
         <!--formulaire-->
-        <form action="" id="form" name="form" method="POST">
+        <form action="confirm.html" id="form" name="form" method="POST">
         <!-- <form id="form" name="form" onSubmit="return formValidation();" method="POST"> -->
           <!--Nom-->
           <div class="name-group">
             <label for="lastName">Nom</label>
             <div class="input-container">
-              <i class="far fa-user icon icon-name"></i>
+              <em class="far fa-user icon icon-name"></em>
               <input type="text" id="lastName" name="lastName" placeholder="Nom" class="input-field">
             </div>
             <span id="error-name">
@@ -77,7 +77,7 @@
           <div class="firstname-group">
             <label for="firstName">Prénom</label>
             <div class="input-container">
-              <i class="far fa-user icon icon-firstname"></i>
+              <em class="far fa-user icon icon-firstname"></em>
               <input type="text" id="firstName" name="firstName" class="input-field" placeholder="Prénom">
             </div>
             <span id="error-firstname">
@@ -88,7 +88,7 @@
           <div class="address-group">
             <label for="address">Adresse</label>
             <div class="input-container">
-              <i class="fas fa-home icon icon-address"></i>
+              <em class="fas fa-home icon icon-address"></em>
               <input type="text" id="address" name="address" class="input-field" placeholder="123 rue origino">
             </div>
             <span id="error-address">
@@ -99,7 +99,7 @@
           <div class="city-group">
             <label for="city" class="labelform">Ville :</label>
             <div class="input-container">
-              <i class="fas fa-home icon icon-city"></i>
+              <em class="fas fa-home icon icon-city"></em>
               <input type="text" id="city" name="city" class="input-field" placeholder="Paris">
             </div>
             <span id="error-city">
@@ -110,7 +110,7 @@
           <div class="email-group">
             <label for="email">Adresse email</label>
             <div class="input-container">
-              <i class="fas fa-at icon icon-email"></i>
+              <em class="fas fa-at icon icon-email"></em>
               <input type="text" id="email" name="email" class="input-field" placeholder="exemple@origino.fr">
             </div>
             <span id="error-email">

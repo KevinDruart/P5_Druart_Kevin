@@ -32,9 +32,7 @@ const selectionProduit = () => {
 
       document.getElementById('descriptionproduit').remove();
 
-
     });
-
 }
 selectionProduit();
 
@@ -68,7 +66,6 @@ const ajouterAuPanier = (article) => {
     //actualisation de la page
     location.reload();
   }
-
 };
 
 

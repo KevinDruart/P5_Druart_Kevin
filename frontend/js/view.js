@@ -140,10 +140,18 @@ const affichagePanier = (article, index) => {
 
     let ligneHeader = create("tr", "class", "ligneHeader");
 
-    let imgProductHeader = create("th", "class", "imgHeader column1");
-    let nameProductHeader = create("th", "class", "nameHeader column2");
-    let priceProductHeader = create("th", "class", "priceHeader column3");
-    let actionHeader = create("th", "class", "actionHeader column4");
+    let imgProductHeader = create("th", "class", "imgHeader");
+    let nameProductHeader = create("th", "class", "nameHeader");
+    let priceProductHeader = create("th", "class", "priceHeader");
+    let actionHeader = create("th", "class", "actionHeader");
+
+    //Attributs supplémentaire
+    ligneHeader.setAttribute("scope", "row");
+    imgProductHeader.setAttribute("scope", "col");
+    nameProductHeader.setAttribute("scope", "col");
+    priceProductHeader.setAttribute("scope", "col");
+    actionHeader.setAttribute("scope", "col");
+
 
     //Hiérarchisation des élements de l'entête du tableau
     aside.appendChild(list);
@@ -167,17 +175,19 @@ const affichagePanier = (article, index) => {
 
     //Création d'une ligne dans le tableau pour chaque produit composant le panier
     monPanier.forEach((article, index) => {
-        let infoArticle = create("tr");
-        let articleImageBox = create("td", "class", "imgArticle column1")
+        let infoArticle = create("tr", "class", "infoArticle");
+        let articleImageBox = create("td", "class", "imgArticle")
         let articleImage = create("img", "class", "articleImage");
-        let titleArticle = create("td", "class", "nameArticle column2");
-        let articlePrix = create("td", "class", "articlePrice column3");
-        let arcticleActionBox = create("td", "class", "arcticleAction column4")
-        let articleAction = create("i", "id", index);
+        let titleArticle = create("td", "class", "nameArticle");
+        let articlePrix = create("td", "class", "articlePrice");
+        let arcticleActionBox = create("td", "class", "arcticleAction")
+        let articleAction = create("span", "id", index);
 
         //Attributs suplémentaires
+        infoArticle.setAttribute("scope", "row");
         articleImage.setAttribute("src", article.imageUrl);
-        articleAction.setAttribute("alt", "Retirer l'article du panier.");
+        articleImage.setAttribute("alt", "image produit");
+        articleAction.setAttribute("title", "Retirer l'article du panier.");
         articleAction.setAttribute("class", "fas fa-trash-alt"); //Logo poubelle pour supprimer l'article du panier.
 
         //Modification visuel du style
@@ -207,21 +217,25 @@ const affichagePanier = (article, index) => {
 
     //Création de la ligne du pied de tableau affichant le prix total de la commande
     let footerLigne = create("tfoot", "class", "lignePrix");
-    let footerText = create("td", "class", "total column1");
+    let footerContainer = create("tr", "class", "footer-container");
+    let footerText = create("th", "class", "total column1");
     let footerPrixTotal = create("td", "class", "prix-total");
-    let space = create("td")
+    let space = create("td", "class", "space")
     let deletePanierBox = create("td", "class", "deletePanierBox");
     let deletePanier = create("button", "id", "deletePanier");
 
     //Attribut supplémentaires
+    footerContainer.setAttribute("scope", "row");
     deletePanier.setAttribute("class", "btn btn-outline-danger rounded-pill");
+    deletePanier.setAttribute("title", "vider mon panier");
 
     //Hierarchisation
     list.appendChild(footerLigne);
-    footerLigne.appendChild(footerText);
-    footerLigne.appendChild(footerPrixTotal);
-    footerLigne.appendChild(space);
-    footerLigne.appendChild(deletePanierBox);
+    footerLigne.appendChild(footerContainer);
+    footerContainer.appendChild(footerText);
+    footerContainer.appendChild(footerPrixTotal);
+    footerContainer.appendChild(space);
+    footerContainer.appendChild(deletePanierBox);
     deletePanierBox.appendChild(deletePanier);
 
     //ajout d'un evenement pour ecouter le click
@@ -255,15 +269,16 @@ const cardProduct = (data) => {
     let descriptionProduit = document.getElementById("descriptionproduit");
 
     //On crée l'affichage de la description du produit séléctionné par l'utilisateur
+    let descriptionProduitNom = create("h2", "class", "Nomdescription");
     let descriptionContainer = create("div", "id", "Blockdescription");
     let descriptionProduitB1 = create("div", "class", "B1description order1");
     let descriptionProduitB2 = create("div", "class", "B2description order2");
-    let descriptionProduitNom = create("h2", "class", "Nomdescription");
+
     let descriptionProduitPrix = create("p", "class", "Prixdescription");
     let descriptionProduitImage = create("img", "src", data.imageUrl);
     let descriptionProduitDescription = create("p", "class", "Descriptionproduit");
     let optionSelect = create("div", "class", "select-option order3");
-    let label = create("label", "for", "option");
+    let label = create("label", "for", "Option");
     let selectProduct = create("select", "id", "Option");
     let valid = create("button", "type", "button");
 
@@ -280,12 +295,12 @@ const cardProduct = (data) => {
     selectProduct.setAttribute("name", "option");
     valid.setAttribute("id", "panier");
 
-    //Hiérarchisation des élements crées
+    //Hiérarchisation des élements crées    
+    descriptionProduit.appendChild(descriptionProduitNom);
     descriptionProduit.appendChild(descriptionContainer);
     descriptionContainer.appendChild(descriptionProduitB1);
     descriptionContainer.appendChild(descriptionProduitB2);
     descriptionProduitB1.appendChild(descriptionProduitImage);
-    descriptionProduitB2.appendChild(descriptionProduitNom);
     descriptionProduitB2.appendChild(descriptionProduitPrix);
     descriptionProduitB2.appendChild(descriptionProduitDescription);
     descriptionContainer.appendChild(optionSelect);
@@ -319,7 +334,7 @@ const createProduct = (teddy) => {
 
     //On crée l'affichage des produits sur l'index grâce a la fonction create
     let produitContainer = create("div", "class", "Block");
-    let produitB1 = create("article", "class", "B1");
+    let produitB1 = create("div", "class", "B1");
     let produitImage = create("img", "src", teddy.imageUrl);
     let produitB2 = create("aside", "class", "B2");
     let produitNom = create("h2", "class", "Nomproduits");
@@ -352,7 +367,7 @@ const errorServer = () => {
 
     //création des elements qui afficheront un message en cas d'erreur
     let error = document.getElementById('card');
-    //let imgError = document.createElement('img');
+    let imgError = document.createElement('img');
     let errorMsg = document.createElement('h4');
 
     //Hierarchisation des elements créer
