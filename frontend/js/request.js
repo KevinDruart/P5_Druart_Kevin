@@ -22,7 +22,6 @@ const postRequest = async (url, options) => {
         //sauvegarde false dans le sessionStorage key validOrder
         sessionStorage.setItem("validOrder", "false")
     }
-
 }
 
 /*----------------------Gestion du localStorage-------------------------- */
