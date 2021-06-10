@@ -2,6 +2,8 @@
 /*---------------------Selection du produit en fonction de id--------------------*/
 
 const selectionProduit = () => {
+  //appel de la fonction qui affiche le nombre de produit dans le panier header
+  numberInPanier();
   //on recupere l'url actuel 
   const urlParams = new URLSearchParams(window.location.search);
   //recuperation de l'id produit dans l'url

@@ -1,5 +1,4 @@
-/*-------------Création de la mise en page de la page panier--------------------*/
-
+/*-------------Création de la mise en page de la page confirm--------------------*/
 const affichageConfirm = (ticketOrderId, ticketNameOrder, ticketPriceOrder) => {
     //recuperation de la balise main ou sera injecter la view
     let confirmMain = document.getElementById('confirm');
@@ -96,9 +95,9 @@ const affichageConfirm = (ticketOrderId, ticketNameOrder, ticketPriceOrder) => {
 
     //titre de la page
     title.style.paddingLeft = '1%';
-
 }
 
+/*----------------------Affichage de la view de la page panier-------------------------- */
 const affichagePanier = (article, index) => {
     //selection des message erreur du formulaire
     let msgErrorName = document.getElementById('error-name');
@@ -114,7 +113,6 @@ const affichagePanier = (article, index) => {
     msgErrorCity.style.display = 'none';
     msgErrorEmail.style.display = 'none';
 
-
     //on selectionne la balise "cart-info" pour y injecter nos elements
     let aside = document.getElementById("cart-info");
 
@@ -122,6 +120,7 @@ const affichagePanier = (article, index) => {
     let infoCart = create("h4", "class", "titlePanier")
     let cartLength = create("span", "id", "contenance");
     let cartLengthNumber = create("span", "class", "badge bg-primary rounded-pill");
+    let monPanier = getMonPanier();
 
     //Hierarchisation
     aside.appendChild(infoCart);
@@ -152,7 +151,6 @@ const affichagePanier = (article, index) => {
     priceProductHeader.setAttribute("scope", "col");
     actionHeader.setAttribute("scope", "col");
 
-
     //Hiérarchisation des élements de l'entête du tableau
     aside.appendChild(list);
     list.appendChild(headerTableau);
@@ -168,10 +166,8 @@ const affichagePanier = (article, index) => {
     priceProductHeader.textContent = "Prix";
     actionHeader.textContent = "Supprimer";
 
-
     //corps du tableau 
     let articleLigne = create("tbody", "class", "corpsTableau");
-
 
     //Création d'une ligne dans le tableau pour chaque produit composant le panier
     monPanier.forEach((article, index) => {
@@ -257,12 +253,10 @@ const affichagePanier = (article, index) => {
     footerText.textContent = "Total"
     footerPrixTotal.textContent = euro.format(total);
     deletePanier.textContent = "Vider";
-
 }
 
 
 /*-------------Création de la mise en page de la page produit--------------------*/
-
 const cardProduct = (data) => {
 
     //On vient cibler la balise ayant pour id descriptionproduit
@@ -327,7 +321,6 @@ const cardProduct = (data) => {
 }
 
 /*-------------Création de la mise en page de la page index--------------------*/
-
 const createProduct = (teddy) => {
     //On selectionne la section "card"
     let produits = document.getElementById("card");
@@ -359,6 +352,7 @@ const createProduct = (teddy) => {
     produitPrix.textContent = euro.format(teddy.price / 100);
     produitLien.textContent = "Voir plus";
 }
+
 /*----------------------Gestion affichage si erreur du serveur---------------------*/
 const errorServer = () => {
 
@@ -386,7 +380,6 @@ const errorServer = () => {
     imgError.style.width = '100%';
 }
 
-
 /*---------------------Gestion erreur affichage commande ------------------------ */
 const errorOrder = () => {
 
@@ -412,13 +405,22 @@ const errorOrder = () => {
 }
 
 /*------------ajout du nombre d'article dans le panier sur la nav----------*/
-if (monPanier !== null) {
-    //on selectionne la balise 'panier-length' pour y injecter nos elements
-    let panierLength = document.getElementById('panierLength');
 
-    //Attribution des données aux élements créees
-    panierLength.textContent = (monPanier.length);
+const numberInPanier = () => {
+    //recupération de la variable monPanier
+    let monPanier = getMonPanier();
+    //si monPanier n'est pas vide
+    if (monPanier !== null) {
+        //on selectionne la balise 'panier-length' pour y injecter nos elements
+        let panierLength = document.querySelector("#panierLength");
+        //Attribution des données aux élements selectionner
+        panierLength.textContent = monPanier.length;
+    }
+    //si il est vide
+    else {
+        //Attribution des données aux élements selectionner
+        panierLength.textContent = "0";
+    }
 }
-
 
 

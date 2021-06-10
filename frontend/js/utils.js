@@ -17,7 +17,8 @@ const euro = new Intl.NumberFormat('fr-FR', {
 /*------------------Fonction de suppression d'article du panier----------------------*/
 
 const suppressionArticle = (span) => {
-
+  // recuperation de la variable monPanier
+  let monPanier = getMonPanier();
   //suppression de l'element i du tableau;
   monPanier.splice(span, 1);
   //on vide le storage avant de le mettre à jour;  
