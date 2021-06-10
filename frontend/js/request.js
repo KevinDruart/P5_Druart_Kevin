@@ -26,4 +26,6 @@ const postRequest = async (url, options) => {
 
 /*----------------------Gestion du localStorage-------------------------- */
 //declaration de la variable monPanier comme etant le localStorage key produit
-let monPanier = JSON.parse(localStorage.getItem("produit"));
+const getMonPanier = () => {
+    return JSON.parse(localStorage.getItem("produit"));
+}

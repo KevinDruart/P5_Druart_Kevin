@@ -1,6 +1,8 @@
 /*---------------------------Liste Produits INDEX--------------------------*/
 
 const listeTeddies = () => {
+    //appel de la fonction qui affiche le nombre de produit dans le panier header
+    numberInPanier();
     const teddies = getRequest("http://localhost:3000/api/teddies");
     teddies
         //on a une promesse avec des donnees produits

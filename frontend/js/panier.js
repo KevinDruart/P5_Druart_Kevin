@@ -1,10 +1,16 @@
-//On stock le prix total dans cette variable afin de l'afficher dans le tableau 
-let total = 0;
+  //On stock le prix total dans cette variable afin de l'afficher dans le tableau 
+  let total = 0;
 
 /*---------------Affichage du panier utilisateur dans la page "panier"--------------*/
 const cartCheckout = () => {
+
+  //appel de la fonction qui affiche le nombre de produit dans le panier header
+  numberInPanier();
+  //recupération de la variable monPanier
+  let monPanier = getMonPanier();
   //si mon panier contient 1 ou plusieurs article(s) on supprime "votre panier est vide"
   if (monPanier !== null) {
+    //suppresion du message panier vide
     document.getElementById('panierVide').remove();
     //appel de ma view
     affichagePanier();
@@ -61,6 +67,7 @@ cartCheckout();
 
 //creation de mon objet commande Client avec les donnees du formulaire et de mon panier
 const ticket = async () => {
+
   //Récupération des champs du formulaire
   //le nom
   let name = document.getElementById('lastName').value;
