@@ -45,6 +45,23 @@ const videPanier = () => {
 /*-------------------------------Gestion validation ------------------------------- */
 //Validation formulaire avant envoie des données au serveur
 
+//fonction validation input
+const validateInput = (value, regex, errorTag, iconTag, input, message) => {
+  //condition de validation input
+  if (value.length !== 0 && value.match(regex)) {
+    errorTag.style.display = 'none';
+    iconTag.style.backgroundColor = "#32CD32";
+    input.style.border = "2px solid #32CD32";    
+  }
+  //condition non rempli, on affiche rouge et message d'erreur 
+  else {
+    errorTag.style.display = "contents";
+    errorTag.textContent = value + " " + message;
+    iconTag.style.backgroundColor = "red";
+    input.style.border = "2px double red";
+  }
+}
+
 //validation nom
 const validateName = (inputName) => {
   let inputNameBorder = document.getElementById('lastName');
@@ -55,19 +72,8 @@ const validateName = (inputName) => {
   //regex letters
   const letters = /^[a-zA-ZéèçîïÉÈÎÏ]+([-'\s][a-zA-ZéèçîïÉÈÎÏ]+)?$/;
 
-  //Validation en temps reel et affichage signe d'erreur
-  if (valueName.length !== 0 && valueName.match(letters)) {
-    msgError.style.display = 'none';
-    iconError.style.backgroundColor = '#32CD32';
-    inputNameBorder.style.border = "2px solid #32CD32"
-  }
-  //on affiche rouge et message d'erreur si input invalide 
-  else {
-    msgError.style.display = 'contents';
-    msgError.textContent = valueName + " " + "ne peut pas être un nom. veuillez saisir un nom valide uniquement avec des caracteres alphabétiques"
-    iconError.style.backgroundColor = 'red';
-    inputNameBorder.style.border = "2px double red"
-  }
+  //appel de la fonction validate input et on passe les parametres necessaire
+  validateInput(valueName, letters, msgError, iconError, inputNameBorder, "ne peut pas être un nom. veuillez saisir un nom valide uniquement avec des caracteres alphabétiques");
 }
 
 
@@ -81,19 +87,8 @@ const validateFirstName = (inputFirstName) => {
   // creation regex letters
   const letters = /^[a-zA-ZéèçîïÉÈÎÏ]+([-'\s][a-zA-ZéèçîïÉÈÎÏ]+)?$/;
 
-  //Validation en temps reel et affichage signe d'erreur
-  if (valueFirstName.length !== 0 && valueFirstName.match(letters)) {
-    msgErrorFirstname.style.display = 'none';
-    iconErrorFirstname.style.backgroundColor = '#32CD32';
-    inputFirstnameBorder.style.border = "2px solid #32CD32"
-  }
-  //on affiche rouge et message d'erreur si input invalide 
-  else {
-    msgErrorFirstname.style.display = 'contents';
-    msgErrorFirstname.textContent = valueFirstName + " " + "ne peut pas être un prénom. veuillez saisir un prénom valide uniquement avec des caracteres alphabétiques"
-    iconErrorFirstname.style.backgroundColor = 'red';
-    inputFirstnameBorder.style.border = "2px double red"
-  }
+  //appel de la fonction validate input et on passe les parametres necessaire
+  validateInput(valueFirstName, letters, msgErrorFirstname, iconErrorFirstname, inputFirstnameBorder, "ne peut pas être un prénom. veuillez saisir un prénom valide uniquement avec des caracteres alphabétiques");
 }
 
 //validation address
@@ -106,19 +101,9 @@ const validateAddress = (inputAddress) => {
   //creation de la regex pour adresse
   const lettersNumbers = /^\d+\s[A-z]+\s[A-z]+/;
 
-  //Validation en temps reel et affichage signe d'erreur
-  if (valueAddress.length !== 0 && valueAddress.match(lettersNumbers)) {
-    msgErrorAddress.style.display = 'none';
-    iconErrorAddress.style.backgroundColor = '#32CD32';
-    inputAddressBorder.style.border = "2px solid #32CD32"
-  }
-  //on affiche rouge et message d'erreur si input invalide 
-  else {
-    msgErrorAddress.style.display = 'contents';
-    msgErrorAddress.textContent = valueAddress + " " + "n'est pas une adresse valide. Format d'adresse attendu : 25 rue origino"
-    iconErrorAddress.style.backgroundColor = 'red';
-    inputAddressBorder.style.border = "2px double red"
-  }
+  //appel de la fonction validate input et on passe les parametres necessaire
+  validateInput(valueAddress, lettersNumbers, msgErrorAddress, iconErrorAddress, inputAddressBorder, "n'est pas une adresse valide. Format d'adresse attendu : 25 rue origino");
+
 }
 
 //validation city
@@ -130,20 +115,9 @@ const validateCity = (inputCity) => {
 
   //création de la regex letter 
   const letters = /^[a-zA-ZéèîïÉÈÎÏ][a-zA-ZéèîïÉÈÎÏ]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zA-ZéèîïÉÈÎÏ]+)?$/;
-
-  //Validation en temps reel et affichage signe d'erreur
-  if (valueCity.length !== 0 && valueCity.match(letters)) {
-    msgErrorCity.style.display = 'none';
-    iconErrorCity.style.backgroundColor = '#32CD32';
-    inputCityBorder.style.border = "2px solid #32CD32"
-  }
-  //on affiche rouge et message d'erreur si input invalide 
-  else {
-    msgErrorCity.style.display = 'contents';
-    msgErrorCity.textContent = valueCity + " " + "ne peut pas etre une ville et ce champ ne peut rester vide. Veuillez ne saisir que des caractéres alphabétique."
-    iconErrorCity.style.backgroundColor = 'red';
-    inputCityBorder.style.border = "2px double red";
-  }
+  
+  //appel de la fonction validate input et on passe les parametres necessaire
+  validateInput(valueCity, letters, msgErrorCity, iconErrorCity, inputCityBorder, "ne peut pas etre une ville et ce champ ne peut rester vide.");
 }
 
 //Validation email
@@ -156,19 +130,8 @@ const validateEmail = (inputEmail) => {
   //creation de la  regex mail
   const mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-  //Validation en temps reel et affichage signe d'erreur
-  if (valueEmail.length !== 0 && valueEmail.match(mailFormat)) {
-    msgErrorEmail.style.display = 'none';
-    iconErrorEmail.style.backgroundColor = '#32CD32';
-    inputEmailBorder.style.border = "2px solid #32CD32"
-  }
-  //on affiche rouge et message d'erreur si input invalide 
-  else {
-    msgErrorEmail.style.display = 'contents';
-    msgErrorEmail.textContent = valueEmail + " " + "ne peut pas etre un email. Format d'email attendu : contact@origino.fr"
-    iconErrorEmail.style.backgroundColor = 'red';
-    inputEmailBorder.style.border = "2px double red"
-  }
+  //appel de la fonction validate input et on passe les parametres necessaire
+  validateInput(valueEmail, mailFormat, msgErrorEmail, iconErrorEmail, inputEmailBorder, "ne peut pas etre un email. Format d'email attendu : contact@origino.fr");
 }
 
 /*------------------------Validation a l'envoi--------------------------*/
