@@ -1,5 +1,5 @@
-  //On stock le prix total dans cette variable afin de l'afficher dans le tableau 
-  let total = 0;
+//On stock le prix total dans cette variable afin de l'afficher dans le tableau 
+let total = 0;
 
 /*---------------Affichage du panier utilisateur dans la page "panier"--------------*/
 const cartCheckout = () => {
@@ -79,6 +79,9 @@ const ticket = async () => {
   let city = document.getElementById('city').value;
   //l'adresse email
   let email = document.getElementById('email').value;
+
+  //recupération de la variable monPanier
+  let monPanier = getMonPanier();
 
 
   //Création de l'objet à envoyer, regroupant le formulaire et les articles
