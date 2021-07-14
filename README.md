@@ -47,13 +47,13 @@ Vous pouvez cloner ce repository pour récupérer en local le site modifier comp
 
 ### installation
 
-*Prérequis Vous aurez besoin d'avoir Node et npm installés localement sur votre machine.
+* Prérequis Vous aurez besoin d'avoir Node et npm installés localement sur votre machine.
 
 * Cloner ce projet depuis GitHub.
 
-*À partir du dossier du projet, exécutez npm install.
+* À partir du dossier du projet, exécutez npm install.
 
-*Le serveur doit s'exécuter sur localhost avec le port par défaut 3000. Si le serveur s'exécute sur un autre port pour une raison quelconque, cela est imprimé sur la console lorsque le serveur démarre, par ex. Écoute sur le port 3001.
+* Le serveur doit s'exécuter sur localhost avec le port par défaut 3000. Si le serveur s'exécute sur un autre port pour une raison quelconque, cela est imprimé sur la console lorsque le serveur démarre, par ex. Écoute sur le port 3001.
 
 ***
 
