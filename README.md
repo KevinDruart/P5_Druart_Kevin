@@ -25,7 +25,7 @@ Dans un premier temps, Paul souhaite créer un premier MVP pour démontrer le fo
 
 L’équipe est constituée de Jeanne, développeuse back-end travaillant sur les API et vous, pour la partie front-end.
 
-*Si vous avez besoin de la documentation complete[ici](https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/DWJ_FR_P5/P5_Spe%CC%81cifications+fonctionnelles+Orinoco.pdf)
+*Si vous avez besoin de la documentation complete [ici](https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/DWJ_FR_P5/P5_Spe%CC%81cifications+fonctionnelles+Orinoco.pdf)
 
 
 #### Objectifs et Compétences évaluées
