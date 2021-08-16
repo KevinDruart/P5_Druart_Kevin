@@ -1,7 +1,3 @@
-### OpenClassrooms-Développeur Web
-
-
-
 ## Auteur
 
 👤 &nbsp; **Druart Kevin** [Contactez moi](<k.druart2@gmail.com>)
@@ -16,19 +12,6 @@
 
 ![100%](orinoco.png)
 ***
-
-Son credo ? Se démarquer des grands site e-commerce comme Amazon en créant des applications thématiques ne vendant qu’un seul groupe de produits. Il y a par exemple Oribook pour les livres ou Oritextil pour les vêtements.
-
-Vos compétences en développement web et votre personnalité ont plu à Paul, le fondateur de l’entreprise.
-
-Dans un premier temps, Paul souhaite créer un premier MVP pour démontrer le fonctionnement de ses applications à ses investisseurs.
-
-L’équipe est constituée de Jeanne, développeuse back-end travaillant sur les API et vous, pour la partie front-end.
-
-*Si vous avez besoin de la documentation complete [ici](https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/DWJ_FR_P5/P5_Spe%CC%81cifications+fonctionnelles+Orinoco.pdf)
-
-
-#### Objectifs et Compétences évaluées
 
 ***Le but est de creer le frontend d'un site e-commerce***
 
